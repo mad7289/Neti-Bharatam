@@ -1,89 +1,359 @@
 
+/* =================================
+   NETIBHARATAM WEBSITE SCRIPT
+================================= */
+
 let currentLanguage = "en";
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
+/* =================================
+   FOOTER YEAR
+================================= */
 
-document.getElementById("today").textContent =
-  new Date().toLocaleDateString("en-IN", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+/* =================================
+   LANGUAGE TRANSLATIONS
+================================= */
+
+const translations = {
+  en: {
+    breakingLabel: "LATEST",
+    breakingText:
+      "Welcome to NetiBharatam — your destination for news and knowledge.",
+
+    featuredTag: "FEATURED",
+    heroTitle: "Discover India. Understand the World.",
+    heroDescription:
+      "News, knowledge, technology, education and useful information in one place.",
+
+    topStoriesTitle: "Top Stories",
+    categoriesTitle: "Explore Categories",
+    latestTitle: "Latest Articles",
+
+    searchPlaceholder: "Search articles...",
+    searchButton: "Search",
+    searchLabel: "Search articles",
+
+    footerText:
+      "News, knowledge and information for everyone.",
+
+    articlesFound: "articles found.",
+    articleFound: "article found.",
+    noArticles: "No articles found.",
+
+    stories: [
+      {
+        title: "India: News and developments",
+        category: "INDIA",
+        articleTitle: "Understanding India's changing landscape",
+        description:
+          "Explore important developments, public information and explainers about India."
+      },
+      {
+        title: "Technology and innovation updates",
+        category: "TECHNOLOGY",
+        articleTitle: "How technology is shaping everyday life",
+        description:
+          "Discover technology concepts, digital developments and useful guides."
+      },
+      {
+        title: "Education and career information",
+        category: "EDUCATION",
+        articleTitle: "Learning, careers and opportunities",
+        description:
+          "Find educational information, career guidance and learning resources."
+      },
+      {
+        category: "BUSINESS",
+        articleTitle: "Understanding business and the economy",
+        description:
+          "Learn about economic developments, markets and business concepts."
+      },
+      {
+        category: "WORLD",
+        articleTitle: "Understanding global developments",
+        description:
+          "Explore international affairs and their impact on everyday life."
+      },
+      {
+        category: "LIFESTYLE",
+        articleTitle: "Useful knowledge for everyday living",
+        description:
+          "Practical guides, science, general knowledge and lifestyle topics."
+      }
+    ]
+  },
+
+  te: {
+    breakingLabel: "తాజా సమాచారం",
+    breakingText:
+      "వార్తలు మరియు విజ్ఞాన సమాచారం కోసం నేటి భారతానికి స్వాగతం.",
+
+    featuredTag: "ప్రత్యేక కథనం",
+    heroTitle: "భారతదేశాన్ని తెలుసుకోండి. ప్రపంచాన్ని అర్థం చేసుకోండి.",
+    heroDescription:
+      "వార్తలు, విజ్ఞానం, సాంకేతికత, విద్య మరియు ఉపయోగకరమైన సమాచారం ఒకే చోట.",
+
+    topStoriesTitle: "ముఖ్య వార్తలు",
+    categoriesTitle: "విభాగాలను అన్వేషించండి",
+    latestTitle: "తాజా కథనాలు",
+
+    searchPlaceholder: "కథనాలను వెతకండి...",
+    searchButton: "వెతకండి",
+    searchLabel: "కథనాలను వెతకండి",
+
+    footerText:
+      "ప్రతి ఒక్కరికీ వార్తలు, విజ్ఞానం మరియు సమాచారం.",
+
+    articlesFound: "కథనాలు కనుగొనబడ్డాయి.",
+    articleFound: "కథనం కనుగొనబడింది.",
+    noArticles: "కథనాలు కనుగొనబడలేదు.",
+
+    stories: [
+      {
+        title: "భారతదేశ వార్తలు మరియు పరిణామాలు",
+        category: "భారతదేశం",
+        articleTitle: "మారుతున్న భారతదేశాన్ని అర్థం చేసుకుందాం",
+        description:
+          "భారతదేశంలోని ముఖ్యమైన పరిణామాలు, ప్రజా సమాచారం మరియు విశ్లేషణలను తెలుసుకోండి."
+      },
+      {
+        title: "సాంకేతికత మరియు ఆవిష్కరణల సమాచారం",
+        category: "సాంకేతికత",
+        articleTitle: "మన దైనందిన జీవితాన్ని మారుస్తున్న సాంకేతికత",
+        description:
+          "సాంకేతిక పరిజ్ఞానం, డిజిటల్ అభివృద్ధి మరియు ఉపయోగకరమైన మార్గదర్శకాలను తెలుసుకోండి."
+      },
+      {
+        title: "విద్య మరియు కెరీర్ సమాచారం",
+        category: "విద్య",
+        articleTitle: "విద్య, కెరీర్ మరియు అవకాశాలు",
+        description:
+          "విద్యా సమాచారం, కెరీర్ మార్గదర్శకత్వం మరియు అభ్యాస వనరులను తెలుసుకోండి."
+      },
+      {
+        category: "వ్యాపారం",
+        articleTitle: "వ్యాపారం మరియు ఆర్థిక వ్యవస్థను అర్థం చేసుకుందాం",
+        description:
+          "ఆర్థిక పరిణామాలు, మార్కెట్లు మరియు వ్యాపార అంశాల గురించి తెలుసుకోండి."
+      },
+      {
+        category: "ప్రపంచం",
+        articleTitle: "ప్రపంచ పరిణామాలను అర్థం చేసుకుందాం",
+        description:
+          "అంతర్జాతీయ పరిణామాలు మరియు వాటి ప్రభావాలను తెలుసుకోండి."
+      },
+      {
+        category: "జీవనశైలి",
+        articleTitle: "రోజువారీ జీవితానికి ఉపయోగకరమైన విజ్ఞానం",
+        description:
+          "ఆచరణాత్మక మార్గదర్శకాలు, సైన్స్, సాధారణ జ్ఞానం మరియు జీవనశైలి విషయాలు."
+      }
+    ]
+  }
+};
+
+/* =================================
+   UPDATE WEBSITE LANGUAGE
+================================= */
 
 function toggleLanguage() {
+
   currentLanguage = currentLanguage === "en" ? "te" : "en";
+
+  updateLanguage();
+}
+
+function updateLanguage() {
+
+  const content = translations[currentLanguage];
 
   const telugu = currentLanguage === "te";
 
-  document.documentElement.lang = telugu ? "te" : "en";
+  document.documentElement.lang = currentLanguage;
 
-  document.getElementById("languageButton").textContent =
-    telugu ? "English" : "తెలుగు";
+  function setText(id, value) {
+    const element = document.getElementById(id);
 
-  document.getElementById("tagline").textContent =
-    telugu ? "నేటి భారతం. రేపటి జ్ఞానం." :
-    "Today's India. Tomorrow's Knowledge.";
+    if (element) {
+      element.textContent = value;
+    }
+  }
 
-  document.getElementById("breakingLabel").textContent =
-    telugu ? "తాజా సమాచారం" : "LATEST";
+  setText("breakingLabel", content.breakingLabel);
+  setText("breakingText", content.breakingText);
 
-  document.getElementById("breakingText").textContent =
-    telugu ? "వార్తలు మరియు విజ్ఞానానికి నేటి భారతానికి స్వాగతం." :
-    "Welcome to NetiBharatam — your destination for news and knowledge.";
+  setText("featuredTag", content.featuredTag);
+  setText("heroTitle", content.heroTitle);
+  setText("heroDescription", content.heroDescription);
 
-  document.getElementById("heroTitle").textContent =
-    telugu ? "భారతదేశాన్ని తెలుసుకోండి. ప్రపంచాన్ని అర్థం చేసుకోండి." :
-    "Discover India. Understand the World.";
+  setText("topStoriesTitle", content.topStoriesTitle);
+  setText("categoriesTitle", content.categoriesTitle);
+  setText("latestTitle", content.latestTitle);
 
-  document.getElementById("heroDescription").textContent =
-    telugu ? "వార్తలు, విజ్ఞానం, సాంకేతికత, విద్య మరియు ఉపయోగకరమైన సమాచారం ఒకే చోట." :
-    "News, knowledge, technology, education and useful information in one place.";
+  setText("searchButton", content.searchButton);
+  setText("footerText", content.footerText);
 
-  document.getElementById("topStoriesTitle").textContent =
-    telugu ? "ముఖ్య వార్తలు" : "Top Stories";
+  const searchInput = document.getElementById("searchInput");
 
-  document.getElementById("categoriesTitle").textContent =
-    telugu ? "విభాగాలను అన్వేషించండి" : "Explore Categories";
+  if (searchInput) {
+    searchInput.placeholder = content.searchPlaceholder;
+    searchInput.setAttribute("aria-label", content.searchLabel);
+  }
 
-  document.getElementById("latestTitle").textContent =
-    telugu ? "తాజా కథనాలు" : "Latest Articles";
+  /* Update navigation links */
 
-  document.getElementById("searchInput").placeholder =
-    telugu ? "కథనాలను వెతకండి..." : "Search articles...";
+  document.querySelectorAll(".main-nav a").forEach(link => {
 
-  document.getElementById("searchButton").textContent =
-    telugu ? "వెతకండి" : "Search";
+    const translatedText = link.dataset[
+      telugu ? "te" : "en"
+    ];
 
-  document.getElementById("footerText").textContent =
-    telugu ? "ప్రతి ఒక్కరికీ వార్తలు, విజ్ఞానం మరియు సమాచారం." :
-    "News, knowledge and information for everyone.";
+    if (translatedText) {
+      link.textContent = translatedText;
+    }
 
-  document.querySelectorAll("nav a").forEach(link => {
-    link.textContent = link.dataset[telugu ? "te" : "en"];
   });
+
+  /* Update category names */
+
+  const categoryNames = telugu
+    ? ["🇮🇳 భారతదేశం", "🌍 ప్రపంచం", "📊 వ్యాపారం",
+       "💻 సాంకేతికత", "🎓 విద్య", "💡 జీవనశైలి"]
+    : ["🇮🇳 India", "🌍 World", "📊 Business",
+       "💻 Technology", "🎓 Education", "💡 Lifestyle"];
+
+  document.querySelectorAll(".category").forEach((category, index) => {
+    if (categoryNames[index]) {
+      category.textContent = categoryNames[index];
+    }
+  });
+
+  /* Update top stories */
+
+  document.querySelectorAll(".side-story").forEach((story, index) => {
+
+    const item = content.stories[index];
+
+    if (!item) return;
+
+    const category = story.querySelector("small");
+    const title = story.querySelector("strong");
+
+    if (category) {
+      category.textContent = item.category || "";
+    }
+
+    if (title) {
+      title.textContent = item.title || "";
+    }
+
+  });
+
+  /* Update article cards */
+
+  document.querySelectorAll(".article").forEach((article, index) => {
+
+    const item = content.stories[index];
+
+    if (!item) return;
+
+    const category = article.querySelector(".article-content small");
+    const title = article.querySelector(".article-content h3");
+    const description = article.querySelector(".article-content p");
+
+    if (category) {
+      category.textContent = item.category || "";
+    }
+
+    if (title) {
+      title.textContent = item.articleTitle || "";
+    }
+
+    if (description) {
+      description.textContent = item.description || "";
+    }
+
+  });
+
+  /* Refresh search results in the selected language */
+
+  searchArticles();
+
 }
 
+/* =================================
+   ARTICLE SEARCH
+================================= */
+
 function searchArticles() {
-  const query = document.getElementById("searchInput")
-    .value.trim().toLowerCase();
+
+  const searchInput = document.getElementById("searchInput");
+
+  if (!searchInput) return;
+
+  const query = searchInput.value.trim().toLowerCase();
 
   const articles = document.querySelectorAll(".article");
+
   let found = 0;
 
   articles.forEach(article => {
-    const matches = article.textContent.toLowerCase().includes(query);
+
+    const matches = article.textContent
+      .toLowerCase()
+      .includes(query);
+
     article.style.display = matches ? "" : "none";
 
-    if (matches) found++;
+    if (matches) {
+      found++;
+    }
+
   });
 
-  document.getElementById("searchMessage").textContent =
-    query === "" ? "" :
-    found + (found === 1 ? " article found." : " articles found.");
+  const message = document.getElementById("searchMessage");
+
+  if (!message) return;
+
+  if (query === "") {
+    message.textContent = "";
+  } else if (found === 0) {
+    message.textContent = translations[currentLanguage].noArticles;
+  } else if (found === 1) {
+    message.textContent = "1 " +
+      translations[currentLanguage].articleFound;
+  } else {
+    message.textContent = found + " " +
+      translations[currentLanguage].articlesFound;
+  }
+
 }
 
-document.getElementById("searchInput").addEventListener("keydown", event => {
-  if (event.key === "Enter") searchArticles();
-});
+/* =================================
+   SEARCH WITH ENTER KEY
+================================= */
+
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+
+  searchInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+      searchArticles();
+    }
+
+  });
+
+}
+
+/* =================================
+   INITIAL WEBSITE SETUP
+================================= */
+
+updateLanguage();
