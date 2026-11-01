@@ -35,7 +35,30 @@ input {
 /* =================================
    NETIBHARATAM WEBSITE HEADER
 ================================= */
+/* Language Switch Button */
+.language-control {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  background: #fffaf0;
+}
 
+.language-control button {
+  background: #102b50;
+  color: #fffaf0;
+  border: 2px solid #e87524;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.language-control button:hover {
+  background: #e87524;
+  color: #ffffff;
+}
 .site-header {
   width: 100%;
   background: var(--cream);
