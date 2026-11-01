@@ -1,0 +1,89 @@
+
+let currentLanguage = "en";
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+document.getElementById("today").textContent =
+  new Date().toLocaleDateString("en-IN", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === "en" ? "te" : "en";
+
+  const telugu = currentLanguage === "te";
+
+  document.documentElement.lang = telugu ? "te" : "en";
+
+  document.getElementById("languageButton").textContent =
+    telugu ? "English" : "తెలుగు";
+
+  document.getElementById("tagline").textContent =
+    telugu ? "నేటి భారతం. రేపటి జ్ఞానం." :
+    "Today's India. Tomorrow's Knowledge.";
+
+  document.getElementById("breakingLabel").textContent =
+    telugu ? "తాజా సమాచారం" : "LATEST";
+
+  document.getElementById("breakingText").textContent =
+    telugu ? "వార్తలు మరియు విజ్ఞానానికి నేటి భారతానికి స్వాగతం." :
+    "Welcome to NetiBharatam — your destination for news and knowledge.";
+
+  document.getElementById("heroTitle").textContent =
+    telugu ? "భారతదేశాన్ని తెలుసుకోండి. ప్రపంచాన్ని అర్థం చేసుకోండి." :
+    "Discover India. Understand the World.";
+
+  document.getElementById("heroDescription").textContent =
+    telugu ? "వార్తలు, విజ్ఞానం, సాంకేతికత, విద్య మరియు ఉపయోగకరమైన సమాచారం ఒకే చోట." :
+    "News, knowledge, technology, education and useful information in one place.";
+
+  document.getElementById("topStoriesTitle").textContent =
+    telugu ? "ముఖ్య వార్తలు" : "Top Stories";
+
+  document.getElementById("categoriesTitle").textContent =
+    telugu ? "విభాగాలను అన్వేషించండి" : "Explore Categories";
+
+  document.getElementById("latestTitle").textContent =
+    telugu ? "తాజా కథనాలు" : "Latest Articles";
+
+  document.getElementById("searchInput").placeholder =
+    telugu ? "కథనాలను వెతకండి..." : "Search articles...";
+
+  document.getElementById("searchButton").textContent =
+    telugu ? "వెతకండి" : "Search";
+
+  document.getElementById("footerText").textContent =
+    telugu ? "ప్రతి ఒక్కరికీ వార్తలు, విజ్ఞానం మరియు సమాచారం." :
+    "News, knowledge and information for everyone.";
+
+  document.querySelectorAll("nav a").forEach(link => {
+    link.textContent = link.dataset[telugu ? "te" : "en"];
+  });
+}
+
+function searchArticles() {
+  const query = document.getElementById("searchInput")
+    .value.trim().toLowerCase();
+
+  const articles = document.querySelectorAll(".article");
+  let found = 0;
+
+  articles.forEach(article => {
+    const matches = article.textContent.toLowerCase().includes(query);
+    article.style.display = matches ? "" : "none";
+
+    if (matches) found++;
+  });
+
+  document.getElementById("searchMessage").textContent =
+    query === "" ? "" :
+    found + (found === 1 ? " article found." : " articles found.");
+}
+
+document.getElementById("searchInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") searchArticles();
+});
