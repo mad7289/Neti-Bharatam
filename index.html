@@ -1,14 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="NetiBharatam - India news, knowledge and information in English and Telugu.">
+
   <title>NetiBharatam | నేటి భారతం</title>
 
-<body>  
-<link rel="stylesheet" href="styles.css">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
 
   <div class="topbar">
@@ -61,14 +65,17 @@
 
       <div class="hero-side">
         <h3 id="topStoriesTitle">Top Stories</h3>
+
         <div class="side-story">
           <small>INDIA</small>
           <strong>India: News and developments</strong>
         </div>
+
         <div class="side-story">
           <small>TECHNOLOGY</small>
           <strong>Technology and innovation updates</strong>
         </div>
+
         <div class="side-story">
           <small>EDUCATION</small>
           <strong>Education and career information</strong>
@@ -78,6 +85,7 @@
 
     <section>
       <h2 class="section-heading" id="categoriesTitle">Explore Categories</h2>
+
       <div class="category-grid">
         <a class="category" href="#india">🇮🇳 India</a>
         <a class="category" href="#world">🌍 World</a>
@@ -92,11 +100,15 @@
       <h2 class="section-heading" id="latestTitle">Latest Articles</h2>
 
       <div class="search-area">
-        <input id="searchInput" type="search"
+        <input
+          id="searchInput"
+          type="search"
           placeholder="Search articles..."
           aria-label="Search articles">
+
         <button onclick="searchArticles()" id="searchButton">Search</button>
       </div>
+
       <p id="searchMessage"></p>
 
       <div class="articles" id="articleList">
@@ -165,7 +177,9 @@
     <p id="footerText">News, knowledge and information for everyone.</p>
     <p>© <span id="year"></span> NetiBharatam. All rights reserved.</p>
   </footer>
-<body>
+
+  <!-- External JavaScript -->
   <script src="script.js"></script>
+
 </body>
 </html>
