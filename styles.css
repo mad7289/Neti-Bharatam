@@ -1,8 +1,8 @@
 
 :root {
-  --navy: #14243a;
+  --navy: #102b50;
   --orange: #e87524;
-  --cream: #fffaf4;
+  --cream: #fffaf0;
   --muted: #667085;
   --border: #e8e8e8;
 }
@@ -11,11 +11,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: #202938;
-  background: #fff;
+  background: #ffffff;
 }
 
 a {
@@ -23,97 +27,78 @@ a {
   text-decoration: none;
 }
 
-.topbar {
-  background: var(--navy);
-  color: white;
-  padding: 9px 6%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-}
-
-header {
-  padding: 20px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--cream);
-  border: 2px solid var(--orange);
-  display: grid;
-  place-items: center;
-  color: var(--orange);
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.brand h1 {
-  margin: 0;
-  font-size: 25px;
-  color: var(--navy);
-}
-
-.brand p {
-  margin: 4px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-button, input {
+button,
+input {
   font: inherit;
 }
 
-.language-btn {
-  border: 1px solid var(--orange);
-  color: var(--orange);
-  background: white;
-  padding: 9px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+/* =================================
+   NETIBHARATAM WEBSITE HEADER
+================================= */
+
+.site-header {
+  width: 100%;
+  background: var(--cream);
+  margin: 0;
+  padding: 0;
 }
 
-nav {
+.header-banner {
+  width: 100%;
+  aspect-ratio: 4.4 / 1;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.header-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* =================================
+   MAIN NAVIGATION
+================================= */
+
+.main-nav {
   background: var(--navy);
-  color: white;
-  padding: 0 6%;
+  color: #ffffff;
   display: flex;
-  gap: 28px;
-  overflow-x: auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 3%;
+}
+
+.main-nav a {
+  color: #ffffff;
+  padding: 17px 20px;
+  font-size: 15px;
+  font-weight: 600;
   white-space: nowrap;
+  border-right: 1px solid rgba(255,255,255,0.25);
+  transition: color 0.2s ease;
 }
 
-nav a {
-  padding: 15px 0;
-  font-size: 14px;
+.main-nav a:last-child {
+  border-right: none;
 }
 
-nav a:hover {
+.main-nav a:hover {
   color: #ffbd83;
 }
+
+/* =================================
+   BREAKING NEWS
+================================= */
 
 .breaking {
   padding: 12px 6%;
   background: #fff3e8;
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .breaking strong {
@@ -121,10 +106,18 @@ nav a:hover {
   margin-right: 10px;
 }
 
+/* =================================
+   MAIN CONTENT
+================================= */
+
 main {
   max-width: 1250px;
   margin: 35px auto;
   padding: 0 25px;
+}
+
+section {
+  margin-bottom: 40px;
 }
 
 .section-heading {
@@ -135,6 +128,10 @@ main {
   margin-bottom: 20px;
 }
 
+/* =================================
+   FEATURED / HERO SECTION
+================================= */
+
 .hero {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
@@ -144,19 +141,19 @@ main {
 
 .hero-main {
   min-height: 300px;
-  background: linear-gradient(120deg, #14243a, #354d69);
+  background: linear-gradient(120deg, #102b50, #354d69);
   border-radius: 10px;
   padding: 35px;
-  color: white;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .tag {
   display: inline-block;
   background: var(--orange);
-  color: white;
+  color: #ffffff;
   padding: 6px 10px;
   font-size: 12px;
   border-radius: 3px;
@@ -182,6 +179,7 @@ main {
 
 .hero-side h3 {
   margin-top: 0;
+  color: var(--navy);
 }
 
 .side-story {
@@ -191,7 +189,7 @@ main {
 }
 
 .side-story:last-child {
-  border-bottom: 0;
+  border-bottom: none;
 }
 
 .side-story small {
@@ -199,6 +197,10 @@ main {
   display: block;
   margin-bottom: 6px;
 }
+
+/* =================================
+   CATEGORY SECTION
+================================= */
 
 .category-grid {
   display: grid;
@@ -215,12 +217,18 @@ main {
   text-align: center;
   font-weight: bold;
   font-size: 14px;
+  transition: all 0.2s ease;
 }
 
 .category:hover {
   border-color: var(--orange);
   color: var(--orange);
+  transform: translateY(-2px);
 }
+
+/* =================================
+   ARTICLES
+================================= */
 
 .articles {
   display: grid;
@@ -232,7 +240,13 @@ main {
   border: 1px solid var(--border);
   border-radius: 9px;
   overflow: hidden;
-  background: white;
+  background: #ffffff;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.article:hover {
+  box-shadow: 0 5px 18px rgba(16, 43, 80, 0.10);
+  transform: translateY(-3px);
 }
 
 .article-image {
@@ -256,6 +270,7 @@ main {
 .article-content h3 {
   line-height: 1.4;
   font-size: 18px;
+  color: var(--navy);
 }
 
 .article-content p {
@@ -263,6 +278,10 @@ main {
   line-height: 1.6;
   font-size: 14px;
 }
+
+/* =================================
+   SEARCH
+================================= */
 
 .search-area {
   margin: 30px 0;
@@ -276,15 +295,24 @@ main {
   padding: 13px;
   border: 1px solid #d5d9df;
   border-radius: 5px;
+  outline: none;
+}
+
+.search-area input:focus {
+  border-color: var(--orange);
 }
 
 .search-area button {
   background: var(--orange);
-  color: white;
+  color: #ffffff;
   border: 0;
   border-radius: 5px;
   padding: 0 20px;
   cursor: pointer;
+}
+
+.search-area button:hover {
+  background: #c85f18;
 }
 
 #searchMessage {
@@ -292,12 +320,20 @@ main {
   font-size: 14px;
 }
 
+/* =================================
+   FOOTER
+================================= */
+
 footer {
   background: var(--navy);
-  color: white;
+  color: #ffffff;
   padding: 35px 6%;
   margin-top: 60px;
   text-align: center;
+}
+
+footer h2 {
+  margin-top: 0;
 }
 
 footer p {
@@ -305,43 +341,86 @@ footer p {
   font-size: 14px;
 }
 
-@media (max-width: 800px) {
-  .hero {
-    grid-template-columns: 1fr;
+/* =================================
+   TABLET RESPONSIVENESS
+================================= */
+
+@media (max-width: 1000px) {
+
+  .main-nav {
+    justify-content: flex-start;
+  }
+
+  .main-nav a {
+    padding: 14px 12px;
+    font-size: 14px;
   }
 
   .category-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .articles {
-    grid-template-columns: repeat(2, 1fr);
+  .hero {
+    grid-template-columns: 1fr;
   }
 
-  header {
-    flex-wrap: wrap;
-  }
 }
 
-@media (max-width: 520px) {
-  .articles {
-    grid-template-columns: 1fr;
+/* =================================
+   MOBILE RESPONSIVENESS
+================================= */
+
+@media (max-width: 600px) {
+
+  .header-banner {
+    aspect-ratio: 3.2 / 1;
+  }
+
+  .main-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 10px;
+  }
+
+  .main-nav a {
+    padding: 13px 12px;
+    font-size: 13px;
+  }
+
+  .breaking {
+    padding: 10px 4%;
+    font-size: 12px;
+  }
+
+  main {
+    padding: 0 16px;
+    margin: 25px auto;
+  }
+
+  .hero-main {
+    min-height: 250px;
+    padding: 25px;
   }
 
   .hero-main h2 {
     font-size: 26px;
   }
 
-  .topbar, header {
-    padding-left: 4%;
-    padding-right: 4%;
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  nav {
-    padding: 0 4%;
+  .articles {
+    grid-template-columns: 1fr;
   }
 
-  main {
-    padding: 0 16px;
+  .search-area button {
+    padding: 0 14px;
   }
+
+  footer {
+    padding: 30px 5%;
+  }
+
 }
