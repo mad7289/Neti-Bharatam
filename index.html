@@ -5,38 +5,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="NetiBharatam - India news, knowledge and information in English and Telugu.">
 
   <title>NetiBharatam | నేటి భారతం</title>
 
-  <!-- External CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <div class="topbar">
-    <span id="today">India News & Information</span>
-    <span>English | తెలుగు</span>
-  </div>
-
-  <header>
-    <div class="brand">
-      <div class="logo" aria-label="NetiBharatam logo">న</div>
-      <div>
-        <h1>NetiBharatam</h1>
-        <p id="tagline">Today's India. Tomorrow's Knowledge.</p>
-      </div>
-    </div>
-
-    <div class="header-actions">
-      <button class="language-btn" id="languageButton" onclick="toggleLanguage()">
-        తెలుగు
-      </button>
+  <!-- Website Header -->
+  <header class="site-header">
+    <div class="header-banner">
+      <img
+        src="assets/netibharatam-header.png"
+        alt="NetiBharatam – నేటి భారతం. India Today. Informed Tomorrow."
+        class="header-image">
     </div>
   </header>
 
-  <nav>
+  <!-- Main Navigation -->
+  <nav class="main-nav">
     <a href="#home" data-en="Home" data-te="హోమ్">Home</a>
     <a href="#india" data-en="India" data-te="భారతదేశం">India</a>
     <a href="#world" data-en="World" data-te="ప్రపంచం">World</a>
@@ -46,17 +36,27 @@
     <a href="#lifestyle" data-en="Lifestyle" data-te="జీవనశైలి">Lifestyle</a>
   </nav>
 
+  <!-- Breaking News -->
   <div class="breaking">
     <strong id="breakingLabel">LATEST</strong>
-    <span id="breakingText">Welcome to NetiBharatam — your destination for news and knowledge.</span>
+    <span id="breakingText">
+      Welcome to NetiBharatam — your destination for news and knowledge.
+    </span>
   </div>
 
+  <!-- Main Content -->
   <main id="home">
 
+    <!-- Featured Section -->
     <section class="hero">
+
       <div class="hero-main">
         <span class="tag" id="featuredTag">FEATURED</span>
-        <h2 id="heroTitle">Discover India. Understand the World.</h2>
+
+        <h2 id="heroTitle">
+          Discover India. Understand the World.
+        </h2>
+
         <p id="heroDescription">
           News, knowledge, technology, education and useful information
           in one place.
@@ -81,10 +81,15 @@
           <strong>Education and career information</strong>
         </div>
       </div>
+
     </section>
 
-    <section>
-      <h2 class="section-heading" id="categoriesTitle">Explore Categories</h2>
+    <!-- Categories -->
+    <section id="categories">
+
+      <h2 class="section-heading" id="categoriesTitle">
+        Explore Categories
+      </h2>
 
       <div class="category-grid">
         <a class="category" href="#india">🇮🇳 India</a>
@@ -94,88 +99,145 @@
         <a class="category" href="#education">🎓 Education</a>
         <a class="category" href="#lifestyle">💡 Lifestyle</a>
       </div>
+
     </section>
 
-    <section>
-      <h2 class="section-heading" id="latestTitle">Latest Articles</h2>
+    <!-- Latest Articles -->
+    <section id="latest">
 
+      <h2 class="section-heading" id="latestTitle">
+        Latest Articles
+      </h2>
+
+      <!-- Search -->
       <div class="search-area">
+
         <input
           id="searchInput"
           type="search"
           placeholder="Search articles..."
           aria-label="Search articles">
 
-        <button onclick="searchArticles()" id="searchButton">Search</button>
+        <button onclick="searchArticles()" id="searchButton">
+          Search
+        </button>
+
       </div>
 
       <p id="searchMessage"></p>
 
+      <!-- Article List -->
       <div class="articles" id="articleList">
 
-        <article class="article">
+        <article class="article" id="india">
           <div class="article-image">India News</div>
+
           <div class="article-content">
             <small>INDIA</small>
+
             <h3>Understanding India's changing landscape</h3>
-            <p>Explore important developments, public information and explainers about India.</p>
+
+            <p>
+              Explore important developments, public information
+              and explainers about India.
+            </p>
           </div>
         </article>
 
-        <article class="article">
+        <article class="article" id="technology">
           <div class="article-image">Technology</div>
+
           <div class="article-content">
             <small>TECHNOLOGY</small>
+
             <h3>How technology is shaping everyday life</h3>
-            <p>Discover technology concepts, digital developments and useful guides.</p>
+
+            <p>
+              Discover technology concepts, digital developments
+              and useful guides.
+            </p>
           </div>
         </article>
 
-        <article class="article">
+        <article class="article" id="education">
           <div class="article-image">Education</div>
+
           <div class="article-content">
             <small>EDUCATION</small>
+
             <h3>Learning, careers and opportunities</h3>
-            <p>Find educational information, career guidance and learning resources.</p>
+
+            <p>
+              Find educational information, career guidance
+              and learning resources.
+            </p>
           </div>
         </article>
 
-        <article class="article">
+        <article class="article" id="business">
           <div class="article-image">Business</div>
+
           <div class="article-content">
             <small>BUSINESS</small>
+
             <h3>Understanding business and the economy</h3>
-            <p>Learn about economic developments, markets and business concepts.</p>
+
+            <p>
+              Learn about economic developments, markets
+              and business concepts.
+            </p>
           </div>
         </article>
 
-        <article class="article">
+        <article class="article" id="world">
           <div class="article-image">World</div>
+
           <div class="article-content">
             <small>WORLD</small>
+
             <h3>Understanding global developments</h3>
-            <p>Explore international affairs and their impact on everyday life.</p>
+
+            <p>
+              Explore international affairs and their impact
+              on everyday life.
+            </p>
           </div>
         </article>
 
-        <article class="article">
+        <article class="article" id="lifestyle">
           <div class="article-image">Knowledge</div>
+
           <div class="article-content">
             <small>LIFESTYLE</small>
+
             <h3>Useful knowledge for everyday living</h3>
-            <p>Practical guides, science, general knowledge and lifestyle topics.</p>
+
+            <p>
+              Practical guides, science, general knowledge
+              and lifestyle topics.
+            </p>
           </div>
         </article>
 
       </div>
+
     </section>
 
   </main>
 
+  <!-- Footer -->
   <footer>
+
     <h2>NetiBharatam</h2>
-    <p id="footerText">News, knowledge and information for everyone.</p>
-    <p>© <span id="year"></span> NetiBharatam. All rights reserved.</p>
+
+    <p id="footerText">
+      News, knowledge and information for everyone.
+    </p>
+
+    <p>
+      © <span id="year"></span> NetiBharatam. All rights reserved.
+    </p>
+
   </footer>
 
   <!-- External JavaScript -->
