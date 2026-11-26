@@ -1,339 +1,123 @@
+/* =========================================
+   NETIBHARATAM - LANGUAGE + BUSINESS SEARCH
+========================================= */
 
-let currentLanguage = "en";
-
-const translations = {
-  en: {
-    pageTitle: "NetiBharatam | Today's India. Tomorrow's Knowledge.",
-    pageDescription: "NetiBharatam brings you the latest news, updates and knowledge from India and around the world.",
-    languageButton: "తెలుగు",
-    nav: {
-      home: "Home",
-      india: "India",
-      world: "World",
-      business: "Business",
-      technology: "Technology",
-      education: "Education & Jobs",
-      lifestyle: "Lifestyle"
-    },
-    breaking: "BREAKING NEWS",
-    breakingText: "Stay updated with the latest news and developments.",
-    heroLabel: "FEATURED STORY",
-    heroTitle: "India's Latest News and Updates",
-    heroDescription: "Your daily destination for news, information and knowledge from India and around the world.",
-    heroButton: "Explore Latest News",
-    topStories: "Top Stories",
-    categories: "Explore Categories",
-    latestArticles: "Latest Articles",
-    searchPlaceholder: "Search news and articles...",
-    searchButton: "Search",
-    searchNoResults: "No matching articles found.",
-    searchResults: "Search results",
-    clearSearch: "Clear Search",
-    copyright: "All rights reserved.",
-    categoriesList: [
-      "India",
-      "Technology",
-      "Education",
-      "Business",
-      "World",
-      "Lifestyle & Knowledge"
-    ],
-    stories: [
-      {
-        category: "India",
-        imageLabel: "INDIA",
-        title: "Latest Updates from India",
-        description: "Read the latest developments, news and important updates from across India."
-      },
-      {
-        category: "Technology",
-        imageLabel: "TECHNOLOGY",
-        title: "Technology and Innovation",
-        description: "Discover the latest technology trends, digital developments and innovations."
-      },
-      {
-        category: "Education",
-        imageLabel: "EDUCATION",
-        title: "Education and Career Updates",
-        description: "Stay informed about education, examinations, results and career opportunities."
-      },
-      {
-        category: "Business",
-        imageLabel: "BUSINESS",
-        title: "Business and Economy",
-        description: "Explore business developments, industry updates and economic news."
-      },
-      {
-        category: "World",
-        imageLabel: "WORLD",
-        title: "News from Around the World",
-        description: "Get important international news and updates from across the globe."
-      },
-      {
-        category: "Lifestyle & Knowledge",
-        imageLabel: "KNOWLEDGE",
-        title: "Lifestyle and General Knowledge",
-        description: "Explore useful information, lifestyle topics and interesting knowledge."
-      }
-    ]
-  },
-
-  te: {
-    pageTitle: "నేటి భారతం | నేటి భారతం. రేపటి జ్ఞానం.",
-    pageDescription: "భారతదేశం మరియు ప్రపంచవ్యాప్తంగా తాజా వార్తలు, సమాచారం మరియు విజ్ఞానాన్ని నేటి భారతంలో తెలుసుకోండి.",
-    languageButton: "English",
-    nav: {
-      home: "హోమ్",
-      india: "భారతదేశం",
-      world: "ప్రపంచం",
-      business: "వ్యాపారం",
-      technology: "సాంకేతికత",
-      education: "విద్య & ఉద్యోగాలు",
-      lifestyle: "జీవనశైలి"
-    },
-    breaking: "తాజా వార్తలు",
-    breakingText: "తాజా వార్తలు మరియు ముఖ్యమైన పరిణామాలను ఎప్పటికప్పుడు తెలుసుకోండి.",
-    heroLabel: "ప్రత్యేక కథనం",
-    heroTitle: "భారతదేశ తాజా వార్తలు మరియు సమాచారం",
-    heroDescription: "భారతదేశం మరియు ప్రపంచవ్యాప్తంగా వార్తలు, సమాచారం మరియు విజ్ఞానాన్ని అందించే మీ రోజువారీ వేదిక.",
-    heroButton: "తాజా వార్తలు చూడండి",
-    topStories: "ముఖ్యమైన వార్తలు",
-    categories: "విభాగాలను అన్వేషించండి",
-    latestArticles: "తాజా కథనాలు",
-    searchPlaceholder: "వార్తలు మరియు కథనాలను వెతకండి...",
-    searchButton: "వెతకండి",
-    searchNoResults: "సరిపోలే కథనాలు ఏవీ కనుగొనబడలేదు.",
-    searchResults: "శోధన ఫలితాలు",
-    clearSearch: "శోధన తొలగించండి",
-    copyright: "అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.",
-    categoriesList: [
-      "భారతదేశం",
-      "సాంకేతికత",
-      "విద్య",
-      "వ్యాపారం",
-      "ప్రపంచం",
-      "జీవనశైలి & విజ్ఞానం"
-    ],
-    stories: [
-      {
-        category: "భారతదేశం",
-        imageLabel: "భారతదేశం",
-        title: "భారతదేశ తాజా సమాచారం",
-        description: "భారతదేశవ్యాప్తంగా తాజా పరిణామాలు, వార్తలు మరియు ముఖ్యమైన సమాచారాన్ని చదవండి."
-      },
-      {
-        category: "సాంకేతికత",
-        imageLabel: "సాంకేతికత",
-        title: "సాంకేతికత మరియు ఆవిష్కరణలు",
-        description: "తాజా సాంకేతిక ధోరణులు, డిజిటల్ అభివృద్ధి మరియు కొత్త ఆవిష్కరణలను తెలుసుకోండి."
-      },
-      {
-        category: "విద్య",
-        imageLabel: "విద్య",
-        title: "విద్య మరియు ఉద్యోగ సమాచారం",
-        description: "విద్య, పరీక్షలు, ఫలితాలు మరియు ఉద్యోగ అవకాశాల గురించి తెలుసుకోండి."
-      },
-      {
-        category: "వ్యాపారం",
-        imageLabel: "వ్యాపారం",
-        title: "వ్యాపారం మరియు ఆర్థిక వ్యవస్థ",
-        description: "వ్యాపార పరిణామాలు, పరిశ్రమల సమాచారం మరియు ఆర్థిక వార్తలను తెలుసుకోండి."
-      },
-      {
-        category: "ప్రపంచం",
-        imageLabel: "ప్రపంచం",
-        title: "ప్రపంచవ్యాప్తంగా వార్తలు",
-        description: "ప్రపంచవ్యాప్తంగా జరుగుతున్న ముఖ్యమైన అంతర్జాతీయ వార్తలు మరియు పరిణామాలను తెలుసుకోండి."
-      },
-      {
-        category: "జీవనశైలి & విజ్ఞానం",
-        imageLabel: "విజ్ఞానం",
-        title: "జీవనశైలి మరియు సాధారణ విజ్ఞానం",
-        description: "ఉపయోగకరమైన సమాచారం, జీవనశైలి అంశాలు మరియు ఆసక్తికరమైన విషయాలను తెలుసుకోండి."
-      }
-    ]
-  }
-};
-
-function toggleLanguage() {
-  currentLanguage = currentLanguage === "en" ? "te" : "en";
-  updateLanguage();
-}
-
-function updateLanguage() {
-  const content = translations[currentLanguage];
-
-  document.documentElement.lang = currentLanguage;
-
-  // Browser tab title and page description
-  const pageTitle = document.getElementById("pageTitle");
-  if (pageTitle) {
-    pageTitle.textContent = content.pageTitle;
-  }
-
-  const pageDescription = document.getElementById("pageDescription");
-  if (pageDescription) {
-    pageDescription.setAttribute("content", content.pageDescription);
-  }
-
-  // Language switch button
+document.addEventListener("DOMContentLoaded", () => {
   const languageButton = document.getElementById("languageButton");
-  if (languageButton) {
-    languageButton.textContent = content.languageButton;
-  }
-
-  // Elements using data-en and data-te attributes
-  document.querySelectorAll("[data-en][data-te]").forEach(element => {
-    const translatedText = element.getAttribute(
-      currentLanguage === "en" ? "data-en" : "data-te"
-    );
-
-    if (translatedText !== null) {
-      element.textContent = translatedText;
-    }
-  });
-
-  // Navigation
-  const navLinks = document.querySelectorAll(".main-nav a");
-  const navKeys = Object.keys(content.nav);
-
-  navLinks.forEach((link, index) => {
-    if (navKeys[index]) {
-      link.textContent = content.nav[navKeys[index]];
-    }
-  });
-
-  // Section headings and labels
-  setText(".breaking-label", content.breaking);
-  setText(".breaking-text", content.breakingText);
-  setText(".hero-label", content.heroLabel);
-  setText(".hero-title", content.heroTitle);
-  setText(".hero-description", content.heroDescription);
-  setText(".hero-button", content.heroButton);
-  setText(".top-stories-title", content.topStories);
-  setText(".categories-title", content.categories);
-  setText(".latest-articles-title", content.latestArticles);
-
-  // Search controls
   const searchInput = document.getElementById("searchInput");
-  if (searchInput) {
-    searchInput.placeholder = content.searchPlaceholder;
-  }
-
   const searchButton = document.getElementById("searchButton");
-  if (searchButton) {
-    searchButton.textContent = content.searchButton;
+  const searchMessage = document.getElementById("searchMessage");
+  const businessCards = Array.from(document.querySelectorAll(".business-card"));
+  const pageTitle = document.getElementById("pageTitle");
+  const pageDescription = document.getElementById("pageDescription");
+  const yearElement = document.getElementById("year");
+
+  let currentLanguage = localStorage.getItem("netibharatam-language") || "en";
+  if (currentLanguage !== "en" && currentLanguage !== "te") {
+    currentLanguage = "en";
   }
 
-  // Article cards
-  const articleCards = document.querySelectorAll(".article-card");
-
-  articleCards.forEach((card, index) => {
-    const story = content.stories[index];
-
-    if (!story) return;
-
-    const category = card.querySelector(".article-category");
-    const imageLabel = card.querySelector(".article-image");
-    const title = card.querySelector(".article-title");
-    const description = card.querySelector(".article-description");
-
-    if (category) category.textContent = story.category;
-    if (imageLabel) imageLabel.textContent = story.imageLabel;
-    if (title) title.textContent = story.title;
-    if (description) description.textContent = story.description;
-  });
-
-  // Footer copyright
-  const copyrightText = document.getElementById("copyrightText");
-  if (copyrightText) {
-    copyrightText.textContent = content.copyright;
-  }
-
-  // Update category labels if present
-  const categoryItems = document.querySelectorAll(".category-card");
-  categoryItems.forEach((item, index) => {
-    if (content.categoriesList[index]) {
-      const label = item.querySelector(".category-title");
-      if (label) {
-        label.textContent = content.categoriesList[index];
-      }
+  const messages = {
+    en: {
+      title: "NetiBharatam | Business",
+      description: "NetiBharatam business news and information.",
+      switchButton: "తెలుగు",
+      searchPlaceholder: "Search business updates...",
+      noResults: "No matching business updates found.",
+      results: (count) => `${count} business update${count === 1 ? "" : "s"} found.`
+    },
+    te: {
+      title: "నేటి భారతం | వ్యాపారం",
+      description: "నేటి భారతం వ్యాపార వార్తలు మరియు సమాచారం.",
+      switchButton: "English",
+      searchPlaceholder: "వ్యాపార సమాచారాన్ని వెతకండి...",
+      noResults: "సరిపోలే వ్యాపార సమాచారం కనబడలేదు.",
+      results: (count) => `${count} వ్యాపార అంశాలు కనిపించాయి.`
     }
-  });
+  };
 
-  // Reapply active search in the selected language
-  const currentSearch = searchInput ? searchInput.value.trim() : "";
-  if (currentSearch) {
-    searchArticles();
-  }
-}
+  function applyLanguage(language) {
+    currentLanguage = language;
+    document.documentElement.lang = language === "te" ? "te" : "en";
+    localStorage.setItem("netibharatam-language", language);
 
-function setText(selector, value) {
-  const element = document.querySelector(selector);
-  if (element) {
-    element.textContent = value;
-  }
-}
+    document.querySelectorAll("[data-en][data-te]").forEach((element) => {
+      element.textContent = element.dataset[language];
+    });
 
-// Search functionality
-function searchArticles() {
-  const searchInput = document.getElementById("searchInput");
-
-  if (!searchInput) return;
-
-  const searchTerm = searchInput.value.trim().toLowerCase();
-  const articleCards = document.querySelectorAll(".article-card");
-
-  let visibleCount = 0;
-
-  articleCards.forEach(card => {
-    const cardText = card.textContent.toLowerCase();
-    const matches = !searchTerm || cardText.includes(searchTerm);
-
-    card.style.display = matches ? "" : "none";
-
-    if (matches) {
-      visibleCount++;
+    if (searchInput) {
+      searchInput.placeholder = messages[language].searchPlaceholder;
     }
-  });
 
-  // Display search feedback
-  let message = document.getElementById("searchMessage");
-
-  if (!message) {
-    message = document.createElement("p");
-    message.id = "searchMessage";
-
-    const articleSection = document.querySelector(".latest-articles");
-
-    if (articleSection) {
-      articleSection.appendChild(message);
+    if (languageButton) {
+      languageButton.textContent = messages[language].switchButton;
+      languageButton.setAttribute(
+        "aria-label",
+        language === "en" ? "Switch to Telugu" : "Switch to English"
+      );
     }
+
+    if (pageTitle) pageTitle.textContent = messages[language].title;
+    if (pageDescription) {
+      pageDescription.setAttribute("content", messages[language].description);
+    }
+
+    updateSearchMessage();
   }
 
-  if (message) {
-    if (searchTerm && visibleCount === 0) {
-      message.textContent = translations[currentLanguage].searchNoResults;
-    } else if (searchTerm) {
-      message.textContent =
-        translations[currentLanguage].searchResults + ": " + visibleCount;
+  function updateSearchMessage() {
+    if (!searchInput || !searchMessage) return;
+
+    const query = searchInput.value.trim().toLocaleLowerCase();
+    const visibleCards = businessCards.filter((card) => !card.hidden);
+
+    if (!query) {
+      searchMessage.textContent = "";
+      return;
+    }
+
+    if (visibleCards.length === 0) {
+      searchMessage.textContent = messages[currentLanguage].noResults;
     } else {
-      message.textContent = "";
+      searchMessage.textContent = messages[currentLanguage].results(visibleCards.length);
     }
   }
-}
 
-// Search when Enter is pressed
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("searchInput");
+  function runSearch() {
+    if (!searchInput) return;
 
-  if (searchInput) {
-    searchInput.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        searchArticles();
-      }
+    const query = searchInput.value.trim().toLocaleLowerCase();
+
+    businessCards.forEach((card) => {
+      const searchableText = card.textContent.toLocaleLowerCase();
+      card.hidden = query !== "" && !searchableText.includes(query);
+    });
+
+    updateSearchMessage();
+  }
+
+  if (languageButton) {
+    languageButton.addEventListener("click", () => {
+      applyLanguage(currentLanguage === "en" ? "te" : "en");
+      runSearch();
     });
   }
 
-  updateLanguage();
+  if (searchButton) {
+    searchButton.addEventListener("click", runSearch);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", runSearch);
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runSearch();
+    });
+  }
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  applyLanguage(currentLanguage);
+  runSearch();
 });
