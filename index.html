@@ -1,14 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="NetiBharatam - India news, knowledge and information in English and Telugu.">
+  <meta
+    name="description"
+    id="pageDescription"
+    content="NetiBharatam - India news, knowledge and information in English and Telugu."
+  >
 
-  <title>NetiBharatam | నేటి భారతం</title>
+  <title id="pageTitle">NetiBharatam | నేటి భారతం</title>
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,51 +20,74 @@
 
   <!-- Website Header -->
   <header class="site-header">
-    
+
+    <!-- Language Switch -->
     <div class="language-control">
-  <button
-    id="languageButton"
-    type="button"
-    onclick="toggleLanguage()"
-    aria-label="Switch website language">
-    తెలుగు
-  </button>
-</div>
-    
+      <button
+        id="languageButton"
+        type="button"
+        onclick="toggleLanguage()"
+        aria-label="Switch website language">
+        తెలుగు
+      </button>
+    </div>
+
+    <!-- Header Banner -->
     <div class="header-banner">
       <img
         src="assets/NetiBharatam%20News%20Portal%20Header.png"
         alt="NetiBharatam – నేటి భారతం. India Today. Informed Tomorrow."
         class="header-image">
     </div>
+
   </header>
+
 
   <!-- Main Navigation -->
   <nav class="main-nav">
+
     <a href="#home" data-en="Home" data-te="హోమ్">Home</a>
+
     <a href="#india" data-en="India" data-te="భారతదేశం">India</a>
+
     <a href="#world" data-en="World" data-te="ప్రపంచం">World</a>
+
     <a href="#business" data-en="Business" data-te="వ్యాపారం">Business</a>
+
     <a href="#technology" data-en="Technology" data-te="సాంకేతికత">Technology</a>
-    <a href="#education" data-en="Education & Jobs" data-te="విద్య & ఉద్యోగాలు">Education & Jobs</a>
-    <a href="#lifestyle" data-en="Lifestyle" data-te="జీవనశైలి">Lifestyle</a>
+
+    <a href="#education" data-en="Education & Jobs" data-te="విద్య & ఉద్యోగాలు">
+      Education & Jobs
+    </a>
+
+    <a href="#lifestyle" data-en="Lifestyle" data-te="జీవనశైలి">
+      Lifestyle
+    </a>
+
   </nav>
+
 
   <!-- Breaking News -->
   <div class="breaking">
+
     <strong id="breakingLabel">LATEST</strong>
+
     <span id="breakingText">
       Welcome to NetiBharatam — your destination for news and knowledge.
     </span>
+
   </div>
+
 
   <!-- Main Content -->
   <main id="home">
+
 
     <!-- Featured Section -->
     <section class="hero">
 
       <div class="hero-main">
+
         <span class="tag" id="featuredTag">FEATURED</span>
 
         <h2 id="heroTitle">
@@ -72,9 +98,13 @@
           News, knowledge, technology, education and useful information
           in one place.
         </p>
+
       </div>
 
+
+      <!-- Top Stories -->
       <div class="hero-side">
+
         <h3 id="topStoriesTitle">Top Stories</h3>
 
         <div class="side-story">
@@ -91,9 +121,11 @@
           <small>EDUCATION</small>
           <strong>Education and career information</strong>
         </div>
+
       </div>
 
     </section>
+
 
     <!-- Categories -->
     <section id="categories">
@@ -103,15 +135,23 @@
       </h2>
 
       <div class="category-grid">
+
         <a class="category" href="#india">🇮🇳 India</a>
+
         <a class="category" href="#world">🌍 World</a>
+
         <a class="category" href="#business">📊 Business</a>
+
         <a class="category" href="#technology">💻 Technology</a>
+
         <a class="category" href="#education">🎓 Education</a>
+
         <a class="category" href="#lifestyle">💡 Lifestyle</a>
+
       </div>
 
     </section>
+
 
     <!-- Latest Articles -->
     <section id="latest">
@@ -119,6 +159,7 @@
       <h2 class="section-heading" id="latestTitle">
         Latest Articles
       </h2>
+
 
       <!-- Search -->
       <div class="search-area">
@@ -129,21 +170,33 @@
           placeholder="Search articles..."
           aria-label="Search articles">
 
-        <button onclick="searchArticles()" id="searchButton">
+        <button
+          onclick="searchArticles()"
+          id="searchButton">
           Search
         </button>
 
       </div>
 
-      <p id="searchMessage"></p>
+      <p id="searchMessage" aria-live="polite"></p>
+
 
       <!-- Article List -->
       <div class="articles" id="articleList">
 
+
+        <!-- India Article -->
         <article class="article" id="india">
-          <div class="article-image">India News</div>
+
+          <div
+            class="article-image"
+            data-en="India News"
+            data-te="భారత వార్తలు">
+            India News
+          </div>
 
           <div class="article-content">
+
             <small>INDIA</small>
 
             <h3>Understanding India's changing landscape</h3>
@@ -152,13 +205,24 @@
               Explore important developments, public information
               and explainers about India.
             </p>
+
           </div>
+
         </article>
 
+
+        <!-- Technology Article -->
         <article class="article" id="technology">
-          <div class="article-image">Technology</div>
+
+          <div
+            class="article-image"
+            data-en="Technology"
+            data-te="సాంకేతికత">
+            Technology
+          </div>
 
           <div class="article-content">
+
             <small>TECHNOLOGY</small>
 
             <h3>How technology is shaping everyday life</h3>
@@ -167,13 +231,24 @@
               Discover technology concepts, digital developments
               and useful guides.
             </p>
+
           </div>
+
         </article>
 
+
+        <!-- Education Article -->
         <article class="article" id="education">
-          <div class="article-image">Education</div>
+
+          <div
+            class="article-image"
+            data-en="Education"
+            data-te="విద్య">
+            Education
+          </div>
 
           <div class="article-content">
+
             <small>EDUCATION</small>
 
             <h3>Learning, careers and opportunities</h3>
@@ -182,13 +257,24 @@
               Find educational information, career guidance
               and learning resources.
             </p>
+
           </div>
+
         </article>
 
+
+        <!-- Business Article -->
         <article class="article" id="business">
-          <div class="article-image">Business</div>
+
+          <div
+            class="article-image"
+            data-en="Business"
+            data-te="వ్యాపారం">
+            Business
+          </div>
 
           <div class="article-content">
+
             <small>BUSINESS</small>
 
             <h3>Understanding business and the economy</h3>
@@ -197,13 +283,24 @@
               Learn about economic developments, markets
               and business concepts.
             </p>
+
           </div>
+
         </article>
 
+
+        <!-- World Article -->
         <article class="article" id="world">
-          <div class="article-image">World</div>
+
+          <div
+            class="article-image"
+            data-en="World"
+            data-te="ప్రపంచం">
+            World
+          </div>
 
           <div class="article-content">
+
             <small>WORLD</small>
 
             <h3>Understanding global developments</h3>
@@ -212,13 +309,24 @@
               Explore international affairs and their impact
               on everyday life.
             </p>
+
           </div>
+
         </article>
 
+
+        <!-- Lifestyle Article -->
         <article class="article" id="lifestyle">
-          <div class="article-image">Knowledge</div>
+
+          <div
+            class="article-image"
+            data-en="Knowledge"
+            data-te="విజ్ఞానం">
+            Knowledge
+          </div>
 
           <div class="article-content">
+
             <small>LIFESTYLE</small>
 
             <h3>Useful knowledge for everyday living</h3>
@@ -227,14 +335,18 @@
               Practical guides, science, general knowledge
               and lifestyle topics.
             </p>
+
           </div>
+
         </article>
+
 
       </div>
 
     </section>
 
   </main>
+
 
   <!-- Footer -->
   <footer>
@@ -246,10 +358,14 @@
     </p>
 
     <p>
-      © <span id="year"></span> NetiBharatam. All rights reserved.
+      © <span id="year"></span>
+      <span id="copyrightText">
+        NetiBharatam. All rights reserved.
+      </span>
     </p>
 
   </footer>
+
 
   <!-- External JavaScript -->
   <script src="script.js"></script>
