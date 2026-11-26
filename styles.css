@@ -35,7 +35,9 @@ input {
 /* =================================
    NETIBHARATAM WEBSITE HEADER
 ================================= */
+
 /* Language Switch Button */
+
 .language-control {
   display: flex;
   justify-content: flex-end;
@@ -59,12 +61,15 @@ input {
   background: #e87524;
   color: #ffffff;
 }
+
 .site-header {
   width: 100%;
   background: var(--cream);
   margin: 0;
   padding: 0;
 }
+
+/* Responsive Header Image - Zoom Friendly */
 
 .header-banner {
   width: 100%;
@@ -396,9 +401,8 @@ footer p {
 
 @media (max-width: 600px) {
 
-  .header-banner {
-    aspect-ratio: 3.2 / 1;
-  }
+  /* Header image automatically maintains
+     its original aspect ratio on mobile */
 
   .main-nav {
     flex-wrap: nowrap;
