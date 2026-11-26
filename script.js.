@@ -1,123 +1,23 @@
-/* =========================================
-   NETIBHARATAM - LANGUAGE + BUSINESS SEARCH
-========================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const languageButton = document.getElementById("languageButton");
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const searchMessage = document.getElementById("searchMessage");
-  const businessCards = Array.from(document.querySelectorAll(".business-card"));
-  const pageTitle = document.getElementById("pageTitle");
-  const pageDescription = document.getElementById("pageDescription");
-  const yearElement = document.getElementById("year");
-
-  let currentLanguage = localStorage.getItem("netibharatam-language") || "en";
-  if (currentLanguage !== "en" && currentLanguage !== "te") {
-    currentLanguage = "en";
-  }
-
-  const messages = {
-    en: {
-      title: "NetiBharatam | Business",
-      description: "NetiBharatam business news and information.",
-      switchButton: "తెలుగు",
-      searchPlaceholder: "Search business updates...",
-      noResults: "No matching business updates found.",
-      results: (count) => `${count} business update${count === 1 ? "" : "s"} found.`
-    },
-    te: {
-      title: "నేటి భారతం | వ్యాపారం",
-      description: "నేటి భారతం వ్యాపార వార్తలు మరియు సమాచారం.",
-      switchButton: "English",
-      searchPlaceholder: "వ్యాపార సమాచారాన్ని వెతకండి...",
-      noResults: "సరిపోలే వ్యాపార సమాచారం కనబడలేదు.",
-      results: (count) => `${count} వ్యాపార అంశాలు కనిపించాయి.`
-    }
-  };
+(() => {
+  const languageButton = document.getElementById('languageButton');
+  const languageKey = 'netibharatam-language';
+  let currentLanguage = localStorage.getItem(languageKey) || 'en';
 
   function applyLanguage(language) {
     currentLanguage = language;
-    document.documentElement.lang = language === "te" ? "te" : "en";
-    localStorage.setItem("netibharatam-language", language);
-
-    document.querySelectorAll("[data-en][data-te]").forEach((element) => {
+    document.documentElement.lang = language;
+    document.querySelectorAll('[data-en][data-te]').forEach((element) => {
       element.textContent = element.dataset[language];
     });
-
-    if (searchInput) {
-      searchInput.placeholder = messages[language].searchPlaceholder;
-    }
-
-    if (languageButton) {
-      languageButton.textContent = messages[language].switchButton;
-      languageButton.setAttribute(
-        "aria-label",
-        language === "en" ? "Switch to Telugu" : "Switch to English"
-      );
-    }
-
-    if (pageTitle) pageTitle.textContent = messages[language].title;
-    if (pageDescription) {
-      pageDescription.setAttribute("content", messages[language].description);
-    }
-
-    updateSearchMessage();
+    languageButton.textContent = language === 'en' ? 'తెలుగు' : 'English';
+    languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Telugu' : 'Switch to English');
+    localStorage.setItem(languageKey, language);
   }
 
-  function updateSearchMessage() {
-    if (!searchInput || !searchMessage) return;
+  languageButton.addEventListener('click', () => {
+    applyLanguage(currentLanguage === 'en' ? 'te' : 'en');
+  });
 
-    const query = searchInput.value.trim().toLocaleLowerCase();
-    const visibleCards = businessCards.filter((card) => !card.hidden);
-
-    if (!query) {
-      searchMessage.textContent = "";
-      return;
-    }
-
-    if (visibleCards.length === 0) {
-      searchMessage.textContent = messages[currentLanguage].noResults;
-    } else {
-      searchMessage.textContent = messages[currentLanguage].results(visibleCards.length);
-    }
-  }
-
-  function runSearch() {
-    if (!searchInput) return;
-
-    const query = searchInput.value.trim().toLocaleLowerCase();
-
-    businessCards.forEach((card) => {
-      const searchableText = card.textContent.toLocaleLowerCase();
-      card.hidden = query !== "" && !searchableText.includes(query);
-    });
-
-    updateSearchMessage();
-  }
-
-  if (languageButton) {
-    languageButton.addEventListener("click", () => {
-      applyLanguage(currentLanguage === "en" ? "te" : "en");
-      runSearch();
-    });
-  }
-
-  if (searchButton) {
-    searchButton.addEventListener("click", runSearch);
-  }
-
-  if (searchInput) {
-    searchInput.addEventListener("input", runSearch);
-    searchInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") runSearch();
-    });
-  }
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
   applyLanguage(currentLanguage);
-  runSearch();
-});
+})();
