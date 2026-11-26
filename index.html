@@ -1,424 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    id="pageDescription"
-    content="NetiBharatam - India news, knowledge and information in English and Telugu."
-  >
-
-  <title id="pageTitle">NetiBharatam | నేటి భారతం</title>
-
+  <meta name="description" id="pageDescription" content="NetiBharatam business news and information.">
+  <meta name="theme-color" content="#102a43">
+  <title id="pageTitle">NetiBharatam | Business</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-
-  <!-- Website Header -->
   <header class="site-header">
-
-    <!-- Language Switch -->
-    <div class="language-control">
-      <button
-        id="languageButton"
-        type="button"
-        onclick="toggleLanguage()"
-        aria-label="Switch website language">
-        తెలుగు
-      </button>
+    <div class="language-bar">
+      <button id="languageButton" type="button" aria-label="Switch language">తెలుగు</button>
     </div>
 
-    <!-- Header Banner -->
-    
-/* Responsive Brand Banner */
-.brand-banner {
-  width: 100%;
-  min-height: clamp(180px, 25vw, 340px);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: clamp(12px, 3vw, 40px);
-  background:
-    linear-gradient(
-      90deg,
-      transparent 25%,
-      rgba(255,255,255,0.15) 45%,
-      rgba(255,255,255,0.85) 100%
-    ),
-    url("assets/netibharatam-banner-bg.png") center / cover no-repeat;
-  overflow: hidden;
-}
-
-.brand-copy {
-  width: 60%;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-
-.brand-copy h1 {
-  font-size: clamp(25px, 5vw, 70px);
-  line-height: 1.15;
-  color: #102a43;
-  margin: 0;
-}
-
-.brand-copy h1 span {
-  color: #e87524;
-}
-
-.brand-copy h2 {
-  font-size: clamp(22px, 3.5vw, 46px);
-  color: #102a43;
-  margin-top: 8px;
-}
-
-@media (max-width: 600px) {
-  .brand-banner {
-    min-height: 170px;
-    background-position: 35% center;
-  }
-
-  .brand-copy {
-    width: 65%;
-  }
-}
-
-/>
+    <!-- Banner image only: no title or text is placed over the image. -->
+    <div class="header-banner">
+      <img
+        class="header-image"
+        src="assets/NetiBharatam Patriotic Sunrise Banner.png"
+        alt="NetiBharatam patriotic sunrise banner"
+      >
     </div>
-
   </header>
 
-
-  <!-- Main Navigation -->
-  <nav class="main-nav">
-
-    <a href="#home" data-en="Home" data-te="హోమ్">Home</a>
-
-    <a href="#india" data-en="India" data-te="భారతదేశం">India</a>
-
-    <a href="#world" data-en="World" data-te="ప్రపంచం">World</a>
-
+  <nav class="main-nav" aria-label="Main navigation">
     <a href="#business" data-en="Business" data-te="వ్యాపారం">Business</a>
-
-    <a href="#technology" data-en="Technology" data-te="సాంకేతికత">Technology</a>
-
-    <a href="#education" data-en="Education & Jobs" data-te="విద్య & ఉద్యోగాలు">
-      Education & Jobs
-    </a>
-
-    <a href="#lifestyle" data-en="Lifestyle" data-te="జీవనశైలి">
-      Lifestyle
-    </a>
-
   </nav>
 
-
-  <!-- Breaking News -->
-  <div class="breaking">
-
-    <strong id="breakingLabel">LATEST</strong>
-
-    <span id="breakingText">
-      Welcome to NetiBharatam — your destination for news and knowledge.
-    </span>
-
-  </div>
-
-
-  <!-- Main Content -->
-  <main id="home">
-
-
-    <!-- Featured Section -->
-    <section class="hero">
-
-      <div class="hero-main">
-
-        <span class="tag" id="featuredTag">FEATURED</span>
-
-        <h2 id="heroTitle">
-          Discover India. Understand the World.
-        </h2>
-
-        <p id="heroDescription">
-          News, knowledge, technology, education and useful information
-          in one place.
-        </p>
-
-      </div>
-
-
-      <!-- Top Stories -->
-      <div class="hero-side">
-
-        <h3 id="topStoriesTitle">Top Stories</h3>
-
-        <div class="side-story">
-          <small>INDIA</small>
-          <strong>India: News and developments</strong>
-        </div>
-
-        <div class="side-story">
-          <small>TECHNOLOGY</small>
-          <strong>Technology and innovation updates</strong>
-        </div>
-
-        <div class="side-story">
-          <small>EDUCATION</small>
-          <strong>Education and career information</strong>
-        </div>
-
-      </div>
-
+  <main>
+    <section class="page-intro" aria-labelledby="businessHeading">
+      <p class="eyebrow" data-en="NETIBHARATAM" data-te="నేటిభారతం">NETIBHARATAM</p>
+      <h1 id="businessHeading" data-en="Business" data-te="వ్యాపారం">Business</h1>
+      <p class="intro-copy"
+         data-en="Business news, market developments, entrepreneurship and useful economic updates."
+         data-te="వ్యాపార వార్తలు, మార్కెట్ పరిణామాలు, పారిశ్రామికవేత్తల సమాచారం మరియు ఆర్థిక తాజా వివరాలు.">
+        Business news, market developments, entrepreneurship and useful economic updates.
+      </p>
     </section>
 
-
-    <!-- Categories -->
-    <section id="categories">
-
-      <h2 class="section-heading" id="categoriesTitle">
-        Explore Categories
-      </h2>
-
-      <div class="category-grid">
-
-        <a class="category" href="#india">🇮🇳 India</a>
-
-        <a class="category" href="#world">🌍 World</a>
-
-        <a class="category" href="#business">📊 Business</a>
-
-        <a class="category" href="#technology">💻 Technology</a>
-
-        <a class="category" href="#education">🎓 Education</a>
-
-        <a class="category" href="#lifestyle">💡 Lifestyle</a>
-
+    <section class="business-section" id="business" aria-label="Business updates">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-en="LATEST UPDATES" data-te="తాజా సమాచారం">LATEST UPDATES</p>
+          <h2 data-en="Business desk" data-te="వ్యాపార విభాగం">Business desk</h2>
+        </div>
+        <div class="search-box">
+          <label class="visually-hidden" for="searchInput"
+                 data-en="Search business updates" data-te="వ్యాపార సమాచారాన్ని వెతకండి">Search business updates</label>
+          <input id="searchInput" type="search"
+                 placeholder="Search business updates..."
+                 data-placeholder-en="Search business updates..."
+                 data-placeholder-te="వ్యాపార సమాచారాన్ని వెతకండి...">
+          <button id="searchButton" type="button" data-en="Search" data-te="వెతకండి">Search</button>
+        </div>
       </div>
 
+      <p id="searchMessage" class="search-message" role="status" aria-live="polite"></p>
+
+      <div class="business-grid" id="businessList">
+        <article class="business-card">
+          <div class="card-topline">
+            <span class="category-label" data-en="ECONOMY" data-te="ఆర్థిక వ్యవస్థ">ECONOMY</span>
+            <span class="card-mark" aria-hidden="true">₹</span>
+          </div>
+          <h3 data-en="India's business and economy" data-te="భారతదేశ వ్యాపారం మరియు ఆర్థిక వ్యవస్థ">India's business and economy</h3>
+          <p data-en="Updates and explainers about the Indian economy, industries, policy and business activity."
+             data-te="భారత ఆర్థిక వ్యవస్థ, పరిశ్రమలు, విధానాలు మరియు వ్యాపార కార్యకలాపాలపై సమాచారం.">
+            Updates and explainers about the Indian economy, industries, policy and business activity.
+          </p>
+        </article>
+
+        <article class="business-card">
+          <div class="card-topline">
+            <span class="category-label" data-en="STARTUPS" data-te="స్టార్టప్‌లు">STARTUPS</span>
+            <span class="card-mark" aria-hidden="true">↗</span>
+          </div>
+          <h3 data-en="Startups and entrepreneurship" data-te="స్టార్టప్‌లు మరియు వ్యాపారవేత్తలు">Startups and entrepreneurship</h3>
+          <p data-en="Stories about new businesses, founders, innovation and opportunities for entrepreneurs."
+             data-te="కొత్త వ్యాపారాలు, వ్యవస్థాపకులు, ఆవిష్కరణలు మరియు వ్యాపార అవకాశాల గురించి కథనాలు.">
+            Stories about new businesses, founders, innovation and opportunities for entrepreneurs.
+          </p>
+        </article>
+
+        <article class="business-card">
+          <div class="card-topline">
+            <span class="category-label" data-en="MARKETS" data-te="మార్కెట్లు">MARKETS</span>
+            <span class="card-mark" aria-hidden="true">▥</span>
+          </div>
+          <h3 data-en="Markets and industry" data-te="మార్కెట్లు మరియు పరిశ్రమలు">Markets and industry</h3>
+          <p data-en="General information about market trends, companies, trade and major industry developments."
+             data-te="మార్కెట్ ధోరణులు, కంపెనీలు, వాణిజ్యం మరియు పరిశ్రమల ముఖ్య పరిణామాలపై సాధారణ సమాచారం.">
+            General information about market trends, companies, trade and major industry developments.
+          </p>
+        </article>
+      </div>
     </section>
-
-
-    <!-- Latest Articles -->
-    <section id="latest">
-
-      <h2 class="section-heading" id="latestTitle">
-        Latest Articles
-      </h2>
-
-
-      <!-- Search -->
-      <div class="search-area">
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search articles..."
-          aria-label="Search articles">
-
-        <button
-          onclick="searchArticles()"
-          id="searchButton">
-          Search
-        </button>
-
-      </div>
-
-      <p id="searchMessage" aria-live="polite"></p>
-
-
-      <!-- Article List -->
-      <div class="articles" id="articleList">
-
-
-        <!-- India Article -->
-        <article class="article" id="india">
-
-          <div
-            class="article-image"
-            data-en="India News"
-            data-te="భారత వార్తలు">
-            India News
-          </div>
-
-          <div class="article-content">
-
-            <small>INDIA</small>
-
-            <h3>Understanding India's changing landscape</h3>
-
-            <p>
-              Explore important developments, public information
-              and explainers about India.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- Technology Article -->
-        <article class="article" id="technology">
-
-          <div
-            class="article-image"
-            data-en="Technology"
-            data-te="సాంకేతికత">
-            Technology
-          </div>
-
-          <div class="article-content">
-
-            <small>TECHNOLOGY</small>
-
-            <h3>How technology is shaping everyday life</h3>
-
-            <p>
-              Discover technology concepts, digital developments
-              and useful guides.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- Education Article -->
-        <article class="article" id="education">
-
-          <div
-            class="article-image"
-            data-en="Education"
-            data-te="విద్య">
-            Education
-          </div>
-
-          <div class="article-content">
-
-            <small>EDUCATION</small>
-
-            <h3>Learning, careers and opportunities</h3>
-
-            <p>
-              Find educational information, career guidance
-              and learning resources.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- Business Article -->
-        <article class="article" id="business">
-
-          <div
-            class="article-image"
-            data-en="Business"
-            data-te="వ్యాపారం">
-            Business
-          </div>
-
-          <div class="article-content">
-
-            <small>BUSINESS</small>
-
-            <h3>Understanding business and the economy</h3>
-
-            <p>
-              Learn about economic developments, markets
-              and business concepts.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- World Article -->
-        <article class="article" id="world">
-
-          <div
-            class="article-image"
-            data-en="World"
-            data-te="ప్రపంచం">
-            World
-          </div>
-
-          <div class="article-content">
-
-            <small>WORLD</small>
-
-            <h3>Understanding global developments</h3>
-
-            <p>
-              Explore international affairs and their impact
-              on everyday life.
-            </p>
-
-          </div>
-
-        </article>
-
-
-        <!-- Lifestyle Article -->
-        <article class="article" id="lifestyle">
-
-          <div
-            class="article-image"
-            data-en="Knowledge"
-            data-te="విజ్ఞానం">
-            Knowledge
-          </div>
-
-          <div class="article-content">
-
-            <small>LIFESTYLE</small>
-
-            <h3>Useful knowledge for everyday living</h3>
-
-            <p>
-              Practical guides, science, general knowledge
-              and lifestyle topics.
-            </p>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
   </main>
 
-
-  <!-- Footer -->
-  <footer>
-
-    <h2>NetiBharatam</h2>
-
-    <p id="footerText">
-      News, knowledge and information for everyone.
-    </p>
-
-    <p>
-      © <span id="year"></span>
-      <span id="copyrightText">
-        NetiBharatam. All rights reserved.
-      </span>
-    </p>
-
+  <footer class="site-footer">
+    <p class="footer-brand">NetiBharatam <span>నేటి భారతం</span></p>
+    <p data-en="Business information and updates." data-te="వ్యాపార సమాచారం మరియు తాజా వివరాలు.">Business information and updates.</p>
+    <p class="copyright">© <span id="year"></span> NetiBharatam</p>
   </footer>
-
-
-  <!-- External JavaScript -->
-  <script src="script.js"></script>
-
 </body>
 </html>
