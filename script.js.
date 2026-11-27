@@ -1,7 +1,14 @@
 (() => {
   const languageButton = document.getElementById('languageButton');
   const languageKey = 'netibharatam-language';
-  let currentLanguage = localStorage.getItem(languageKey) || 'en';
+  let currentLanguage = 'en';
+
+  try {
+    const savedLanguage = localStorage.getItem(languageKey);
+    if (savedLanguage === 'en' || savedLanguage === 'te') currentLanguage = savedLanguage;
+  } catch (error) {
+    // The page remains usable if browser storage is unavailable.
+  }
 
   function applyLanguage(language) {
     currentLanguage = language;
@@ -11,7 +18,7 @@
     });
     languageButton.textContent = language === 'en' ? 'తెలుగు' : 'English';
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Telugu' : 'Switch to English');
-    localStorage.setItem(languageKey, language);
+    try { localStorage.setItem(languageKey, language); } catch (error) { /* Storage is optional. */ }
   }
 
   languageButton.addEventListener('click', () => {
