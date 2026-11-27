@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neti Bharatam – Admin</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.admin-wrap{max-width:1100px;margin:34px auto;padding:0 20px}.admin-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px rgba(15,44,30,.07);margin:18px 0}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.admin-field{display:grid;gap:6px;margin:12px 0}.admin-field label{font-weight:700;color:var(--navy)}.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:11px 12px;border:1px solid #cbd8d0;border-radius:8px;font:inherit;background:#fff;color:var(--ink)}.admin-field textarea{min-height:230px;resize:vertical}.admin-btn{border:0;border-radius:8px;padding:11px 17px;background:var(--green);color:#fff;font-weight:700;cursor:pointer;margin:4px 6px 4px 0}.admin-btn.secondary{background:#eaf1ec;color:var(--navy)}.admin-btn.danger{background:#b42318}.admin-status{padding:10px 12px;border-radius:8px;background:#f1f5f2;margin:12px 0;white-space:pre-wrap}.admin-list{display:grid;gap:10px}.admin-item{border:1px solid var(--line);border-radius:9px;padding:14px;display:flex;justify-content:space-between;gap:12px;align-items:center}.admin-item small{display:block;color:var(--muted);margin-top:5px}.admin-tabs{display:flex;gap:8px;flex-wrap:wrap}.admin-tabs button[aria-selected=true]{background:var(--navy);color:#fff}.admin-hidden{display:none!important}.admin-preview{white-space:pre-wrap;background:#f7faf8;border:1px dashed #bdcec2;border-radius:8px;padding:12px;max-height:260px;overflow:auto}.admin-comment{border-bottom:1px solid var(--line);padding:12px 0}.admin-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}@media(max-width:700px){.admin-grid{grid-template-columns:1fr}.admin-item{align-items:flex-start;flex-direction:column}.admin-wrap{margin:20px auto;padding:0 14px}.admin-card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="trending-bar"><span class="trending-label">ADMIN</span><span class="trending-text">Neti Bharatam content management</span><a class="language-button" href="index.html" style="text-decoration:none">View Website</a></div>
+<header class="site-header"><a class="brand" href="index.html"><img src="assets/netibharatam-logo.png" alt="Neti Bharatam"></a></header>
+<main class="admin-wrap">
+<section id="loginPanel" class="admin-card">
+<h2>Admin Login</h2>
+<p>Enter your private Admin Secret to start a secure 8-hour session. The secret is not stored in this page.</p>
+<div class="admin-field"><label for="adminSecret">Admin Secret</label><input id="adminSecret" type="password" autocomplete="current-password" placeholder="Enter Admin Secret"></div>
+<button class="admin-btn" id="loginButton">Login</button>
+<div id="loginMessage" class="admin-status" role="status" hidden></div>
+</section>
+<section id="dashboard" class="admin-hidden">
+<div class="admin-card admin-top"><div><h2 style="margin:0">Admin Dashboard</h2><p style="margin:6px 0 0;color:var(--muted)">Create, edit, publish and manage Neti Bharatam posts.</p></div><button class="admin-btn secondary" id="logoutButton">Logout</button></div>
+<div class="admin-card">
+<div class="admin-tabs"><button class="admin-btn secondary" data-tab="postsTab" aria-selected="true">Posts</button><button class="admin-btn secondary" data-tab="commentsTab" aria-selected="false">Comments</button></div>
+<div id="postsTab">
+<h3 id="editorHeading">Create a Post</h3>
+<div class="admin-grid">
+<div class="admin-field"><label for="postTitle">Post Title</label><input id="postTitle" maxlength="200" placeholder="Enter post title"></div>
+<div class="admin-field"><label for="postCategory">Category</label><select id="postCategory"><option value="nifty">Nifty</option><option value="stocks">Stocks</option><option value="sensex">Sensex</option><option value="bank-nifty">Bank Nifty</option><option value="stories">Stories</option><option value="career-guidance">Career Guidance</option><option value="bitcoin">Bitcoin</option><option value="gold">Gold</option></select></div>
+<div class="admin-field"><label for="postSlug">URL Slug (auto-filled)</label><input id="postSlug" maxlength="100" placeholder="post-url-slug"></div>
+<div class="admin-field"><label for="postStatus">Publish Status</label><select id="postStatus"><option value="published">Publish now</option><option value="draft">Save as draft</option></select></div>
+<div class="admin-field"><label for="parentPost">Follow-up to (optional)</label><select id="parentPost"><option value="">New standalone post</option></select></div>
+</div>
+<div class="admin-field"><label for="postBody">Post Content</label><textarea id="postBody" maxlength="50000" placeholder="Write your post here. For an options table, use pipe format:
+| Action | Option | Strike | Premium |
+|---|---|---:|---:|
+| SELL | PE | 25,200 | Rs 26.65 |
+| BUY | PE | 24,900 | Rs 5.40 |"></textarea></div>
+<div><button class="admin-btn" id="savePostButton">Publish Post</button><button class="admin-btn secondary" id="previewButton">Preview</button><button class="admin-btn secondary" id="clearButton">Clear</button></div>
+<div id="postPreview" class="admin-preview" hidden></div>
+<div id="postMessage" class="admin-status" role="status" hidden></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:24px 0">
+<div class="admin-top"><h3>Existing Posts</h3><button class="admin-btn secondary" id="refreshPostsButton">Refresh</button></div>
+<div id="postsList" class="admin-list"></div>
+</div>
+<div id="commentsTab" class="admin-hidden">
+<h3>Visitor Comments</h3>
+<div class="admin-field"><label for="commentStatus">Show comments</label><select id="commentStatus"><option value="pending">Pending review</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></div>
+<div id="commentsList"></div>
+</div>
+</div>
+</section>
+</main>
+<script>
+const API="https://netibharatam-api.vmadhu430.workers.dev";
+const $=id=>document.getElementById(id);
+let sessionToken=sessionStorage.getItem("nb_admin_session")||"";
+let editingId=null;
+let cachedPosts=[];
+function message(id,text){$(id).textContent=text;$(id).hidden=false;}
+function slugify(text){return String(text||"").toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,100);}
+async function api(path,options={}){const headers={"Content-Type":"application/json",...(options.headers||{})};if(sessionToken)headers.Authorization="Bearer "+sessionToken;const response=await fetch(API+path,{...options,headers});let data={};try{data=await response.json();}catch{}if(!response.ok)throw new Error(data.error||"Request failed ("+response.status+")");return data;}
+function showDashboard(){ $("loginPanel").classList.add("admin-hidden");$("dashboard").classList.remove("admin-hidden");loadPosts();loadComments();}
+function showLogin(){ $("dashboard").classList.add("admin-hidden");$("loginPanel").classList.remove("admin-hidden");}
+async function login(){const secret=$("adminSecret").value;if(!secret){message("loginMessage","Please enter the Admin Secret.");return;} $("loginButton").disabled=true;try{const response=await fetch(API+"/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({secret})});const data=await response.json();if(!response.ok)throw new Error(data.error||"Login failed");sessionToken=data.token;sessionStorage.setItem("nb_admin_session",sessionToken);$("adminSecret").value="";showDashboard();}catch(e){message("loginMessage",e.message);}finally{$("loginButton").disabled=false;}}
+async function logout(){try{await api("/admin/logout",{method:"POST"});}catch{}sessionToken="";sessionStorage.removeItem("nb_admin_session");showLogin();}
+function resetEditor(){editingId=null;$("editorHeading").textContent="Create a Post";$("savePostButton").textContent="Publish Post";$("postTitle").value="";$("postSlug").value="";$("postCategory").value="nifty";$("postStatus").value="published";$("parentPost").value="";$("postBody").value="";$("postPreview").hidden=true;}
+function fillEditor(post){editingId=post.id;$("editorHeading").textContent="Edit Post #"+post.id;$("savePostButton").textContent="Save Changes";$("postTitle").value=post.title;$("postSlug").value=post.slug;$("postCategory").value=post.category||"nifty";$("postStatus").value=post.status;$("parentPost").value=post.parent_post_id||"";$("postBody").value=post.body;$("postPreview").hidden=true;window.scrollTo({top:0,behavior:"smooth"});}
+function renderPostList(){const root=$("postsList");root.replaceChildren();if(!cachedPosts.length){root.textContent="No posts found.";return;}cachedPosts.forEach(post=>{const item=document.createElement("div");item.className="admin-item";const info=document.createElement("div");const title=document.createElement("strong");title.textContent=post.title;const meta=document.createElement("small");meta.textContent=(post.category||"nifty")+" • "+post.status+" • #"+post.id;info.append(title,meta);const actions=document.createElement("div");const edit=document.createElement("button");edit.className="admin-btn secondary";edit.textContent="Edit";edit.onclick=()=>fillEditor(post);const del=document.createElement("button");del.className="admin-btn danger";del.textContent="Delete";del.onclick=()=>deletePost(post);actions.append(edit,del);item.append(info,actions);root.append(item);});}
+async function loadPosts(){try{const data=await api("/admin/posts");cachedPosts=data.posts||[];const select=$("parentPost");const chosen=select.value;select.replaceChildren(new Option("New standalone post",""));cachedPosts.filter(p=>p.status!=="draft").forEach(p=>select.add(new Option(p.title+" (#"+p.id+")",p.id)));select.value=chosen;renderPostList();}catch(e){message("postMessage",e.message);if(e.message.includes("Session expired"))logout();}}
+async function savePost(){const title=$("postTitle").value.trim(),body=$("postBody").value.trim(),slug=$("postSlug").value.trim()||slugify(title);if(!title||!body){message("postMessage","Please enter both title and content.");return;}const payload={title,body,slug,category:$("postCategory").value,status:$("postStatus").value,parent_post_id:$("parentPost").value||null};$("savePostButton").disabled=true;try{if(editingId){await api("/admin/posts/"+editingId,{method:"PUT",body:JSON.stringify(payload)});message("postMessage","Post updated successfully.");}else{await api("/admin/posts",{method:"POST",body:JSON.stringify(payload)});message("postMessage","Post saved successfully.");}resetEditor();await loadPosts();}catch(e){message("postMessage",e.message);}finally{$("savePostButton").disabled=false;}}
+async function deletePost(post){if(!confirm("Delete this post and its direct follow-up posts? This cannot be undone."))return;try{await api("/admin/posts/"+post.id,{method:"DELETE"});if(editingId===post.id)resetEditor();message("postMessage","Post deleted.");await loadPosts();}catch(e){message("postMessage",e.message);}}
+async function loadComments(){try{const data=await api("/admin/comments?status="+encodeURIComponent($("commentStatus").value));const root=$("commentsList");root.replaceChildren();const comments=data.comments||[];if(!comments.length){root.textContent="No comments in this status.";return;}comments.forEach(c=>{const box=document.createElement("div");box.className="admin-comment";const heading=document.createElement("strong");heading.textContent=c.visitor_name+" — "+c.post_title;const body=document.createElement("p");body.textContent=c.comment_text;box.append(heading,body);if(c.status==="pending"){for(const status of ["approved","rejected"]){const b=document.createElement("button");b.className="admin-btn "+(status==="rejected"?"danger":"");b.textContent=status==="approved"?"Approve":"Reject";b.onclick=async()=>{try{await api("/admin/comments/"+c.id,{method:"PATCH",body:JSON.stringify({status})});loadComments();}catch(e){message("postMessage",e.message);}};box.append(b);}}root.append(box);});}catch(e){message("postMessage",e.message);}}
+$("loginButton").addEventListener("click",login);$("adminSecret").addEventListener("keydown",e=>{if(e.key==="Enter")login();});$("logoutButton").addEventListener("click",logout);$("savePostButton").addEventListener("click",savePost);$("clearButton").addEventListener("click",resetEditor);$("refreshPostsButton").addEventListener("click",loadPosts);$("commentStatus").addEventListener("change",loadComments);$("postTitle").addEventListener("input",()=>{if(!editingId)$("postSlug").value=slugify($("postTitle").value);});$("previewButton").addEventListener("click",()=>{$("postPreview").textContent=$("postBody").value;$("postPreview").hidden=false;});
+document.querySelectorAll("[data-tab]").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(b=>b.setAttribute("aria-selected",String(b===button)));$("postsTab").classList.toggle("admin-hidden",button.dataset.tab!=="postsTab");$("commentsTab").classList.toggle("admin-hidden",button.dataset.tab!=="commentsTab");}));
+if(sessionToken){api("/admin/session").then(showDashboard).catch(()=>{sessionStorage.removeItem("nb_admin_session");sessionToken="";showLogin();});}
+</script>
+</body>
+</html>
