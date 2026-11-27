@@ -6,6 +6,9 @@
 html { scroll-behavior: smooth; scroll-padding-top: 22px; }
 body { margin: 0; color: var(--ink); background: #fff; font-family: Arial, Helvetica, sans-serif; }
 [hidden] { display: none !important; }
+.trending-bar { min-height: 34px; display: flex; align-items: center; gap: 12px; padding: 4px 4vw; color: #fff; background: linear-gradient(90deg, #123d32, #1b6044); }
+.trending-label { flex: 0 0 auto; padding: 5px 12px; border-radius: 5px; background: var(--orange); font-weight: 800; font-size: 11px; letter-spacing: .4px; }
+.trending-text { flex: 1; font-size: 12px; font-weight: 600; }
 .site-header { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 12px 4vw; background: #fff; border-bottom: 1px solid var(--line); box-shadow: 0 3px 14px rgba(15,44,30,.07); }
 .brand { display: flex; align-items: center; flex: 0 1 40%; min-width: 0; }
 .brand img { display: block; width: clamp(190px, 28vw, 390px); max-width: 100%; height: auto; max-height: 100px; object-fit: contain; object-position: left center; }
@@ -43,6 +46,7 @@ body { margin: 0; color: var(--ink); background: #fff; font-family: Arial, Helve
   .market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 600px) {
+  .trending-bar { padding: 5px 10px; gap: 8px; } .trending-label { font-size: 10px; padding: 5px 8px; } .trending-text { font-size: 10px; }
   .site-header { min-height: 0; flex-direction: column; align-items: stretch; gap: 12px; padding: 12px; }
   .brand { justify-content: center; flex: none; } .brand img { width: min(78vw, 300px); max-height: 85px; object-position: center; }
   .header-actions { flex-direction: column-reverse; align-items: stretch; gap: 10px; }
