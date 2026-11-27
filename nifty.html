@@ -11,7 +11,12 @@
 .nifty-post{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
 .nifty-post h3{margin:0 0 10px;color:#17324d}
 .nifty-post .post-date{font-size:.88rem;color:#667085;margin-bottom:12px}
-.nifty-post .post-body{white-space:pre-wrap;line-height:1.7;color:#263238}
+.nifty-post .post-body{line-height:1.7;color:#263238}
+.nifty-post .post-body p{margin:8px 0}
+.nifty-post .post-table-wrap{overflow-x:auto;margin:12px 0 18px}
+.nifty-post table{width:100%;border-collapse:collapse;min-width:300px}
+.nifty-post th,.nifty-post td{padding:10px 12px;border:1px solid #dfe5e8;text-align:left}
+.nifty-post th{background:#edf4f0;color:#17324d}
 .posts-message{padding:18px;border-radius:10px;background:#f5f7f6;color:#46545b}
 </style>
 </head>
@@ -23,6 +28,36 @@
 <p><a class="back-link" href="indian-markets.html" data-en="← Back to Indian Markets" data-te="← భారత మార్కెట్లకు తిరిగి వెళ్ళండి">← Back to Indian Markets</a></p></section></main>
 <footer class="site-footer"><span>© <span id="currentYear"></span> Neti Bharatam</span><span data-en="Today's India. Tomorrow's Knowledge." data-te="నేటి భారతం. రేపటి జ్ఞానం.">Today's India. Tomorrow's Knowledge.</span></footer>
 <script>
+function renderPostBody(container, source){
+  const lines=String(source||'').split(/\r?\n/);
+  let i=0;
+  while(i<lines.length){
+    const line=lines[i].trim();
+    if(line.startsWith('|') && i+1<lines.length && /^\s*\|?\s*:?-{3,}/.test(lines[i+1])){
+      const headers=line.split('|').slice(1,-1).map(x=>x.trim());
+      i+=2;
+      const table=document.createElement('table');
+      const thead=document.createElement('thead');
+      const hr=document.createElement('tr');
+      headers.forEach(value=>{const th=document.createElement('th');th.textContent=value;hr.appendChild(th);});
+      thead.appendChild(hr);table.appendChild(thead);
+      const tbody=document.createElement('tbody');
+      while(i<lines.length && lines[i].trim().startsWith('|')){
+        const cells=lines[i].trim().split('|').slice(1,-1).map(x=>x.trim());
+        const tr=document.createElement('tr');
+        cells.forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td);});
+        tbody.appendChild(tr);i++;
+      }
+      table.appendChild(tbody);
+      const wrap=document.createElement('div');wrap.className='post-table-wrap';wrap.appendChild(table);container.appendChild(wrap);
+      continue;
+    }
+    if(line){
+      const p=document.createElement('p');p.textContent=line;container.appendChild(p);
+    }
+    i++;
+  }
+}
 (async function(){
   const root=document.getElementById('niftyPosts');
   try{
@@ -32,32 +67,19 @@
     root.replaceChildren();
     const posts=Array.isArray(data.posts)?data.posts:[];
     if(posts.length===0){
-      const empty=document.createElement('div');
-      empty.className='posts-message';
-      empty.textContent='No Nifty updates have been published yet.';
-      root.appendChild(empty);
-      return;
+      const empty=document.createElement('div');empty.className='posts-message';empty.textContent='No Nifty updates have been published yet.';root.appendChild(empty);return;
     }
     posts.forEach(post=>{
-      const article=document.createElement('article');
-      article.className='nifty-post';
-      const heading=document.createElement('h3');
-      heading.textContent=post.title||'Nifty update';
-      const date=document.createElement('div');
-      date.className='post-date';
+      const article=document.createElement('article');article.className='nifty-post';
+      const heading=document.createElement('h3');heading.textContent=post.title||'Nifty update';
+      const date=document.createElement('div');date.className='post-date';
       date.textContent=post.created_at?new Date(post.created_at.replace(' ','T')+'Z').toLocaleString():'';
-      const body=document.createElement('div');
-      body.className='post-body';
-      body.textContent=post.body||'';
-      article.append(heading,date,body);
-      root.appendChild(article);
+      const body=document.createElement('div');body.className='post-body';renderPostBody(body,post.body);
+      article.append(heading,date,body);root.appendChild(article);
     });
   }catch(error){
-    root.replaceChildren();
-    const message=document.createElement('div');
-    message.className='posts-message';
-    message.textContent='Nifty updates are temporarily unavailable. Please try again later.';
-    root.appendChild(message);
+    root.replaceChildren();const message=document.createElement('div');message.className='posts-message';
+    message.textContent='Nifty updates are temporarily unavailable. Please try again later.';root.appendChild(message);
   }
 })();
 </script>
