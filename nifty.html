@@ -16,7 +16,7 @@
 .nifty-post .post-table-wrap{overflow-x:auto;margin:12px 0 18px}
 .nifty-post table{width:100%;border-collapse:collapse;min-width:300px}
 .nifty-post th,.nifty-post td{padding:10px 12px;border:1px solid #dfe5e8;text-align:left}
-.nifty-post th{background:#edf4f0;color:#17324d}
+.nifty-post th{background:#edf4f0;color:#17324d}\n.nifty-post td.action-sell{color:#b42318;background:#fff1f0;font-weight:700}\n.nifty-post td.action-buy{color:#15803d;background:#ecfdf3;font-weight:700}
 .posts-message{padding:18px;border-radius:10px;background:#f5f7f6;color:#46545b}
 </style>
 </head>
@@ -45,7 +45,7 @@ function renderPostBody(container, source){
       while(i<lines.length && lines[i].trim().startsWith('|')){
         const cells=lines[i].trim().split('|').slice(1,-1).map(x=>x.trim());
         const tr=document.createElement('tr');
-        cells.forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td);});
+        cells.forEach((value,index)=>{const td=document.createElement('td');td.textContent=value;if(index===0 && value.toUpperCase()==='SELL')td.className='action-sell';if(index===0 && value.toUpperCase()==='BUY')td.className='action-buy';tr.appendChild(td);});
         tbody.appendChild(tr);i++;
       }
       table.appendChild(tbody);
