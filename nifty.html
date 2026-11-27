@@ -63,7 +63,7 @@ function renderPostBody(container, source){
 (async function(){
   const root=document.getElementById('niftyPosts');
   try{
-    const response=await fetch('https://netibharatam-api.vmadhu430.workers.dev/posts');
+    const response=await fetch('https://netibharatam-api.vmadhu430.workers.dev/posts?category=nifty');
     if(!response.ok) throw new Error('Unable to load posts');
     const data=await response.json();
     root.replaceChildren();
