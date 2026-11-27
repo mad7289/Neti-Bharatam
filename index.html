@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Neti Bharatam - Education, Indian Markets and Global Markets news and information.">
-  <title>Neti Bharatam | Today's India</title>
+  <title>Neti Bharatam | Today's India. Tomorrow's Knowledge.</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -15,24 +15,22 @@
     <button class="language-button" id="languageButton" type="button" aria-label="Switch language">తెలుగు</button>
   </div>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <a class="brand" href="#top" aria-label="Neti Bharatam home">
       <img src="assets/netibharatam-logo.png" alt="Neti Bharatam logo with Indian map">
     </a>
     <nav class="category-nav" aria-label="Main categories">
-      <a class="nav-button" href="#education"><span class="nav-icon" aria-hidden="true">🎓</span><span data-en="Education" data-te="విద్య">Education</span></a>
-      <a class="nav-button" href="#indian-markets"><span class="nav-icon" aria-hidden="true">📈</span><span data-en="Indian Markets" data-te="భారత మార్కెట్లు">Indian Markets</span></a>
-      <a class="nav-button" href="#global-markets"><span class="nav-icon" aria-hidden="true">🌐</span><span data-en="Global Markets" data-te="ప్రపంచ మార్కెట్లు">Global Markets</span></a>
+      <a class="nav-button education-nav" href="#education"><span class="nav-icon" aria-hidden="true">🎓</span><span data-en="Education" data-te="విద్య">Education</span></a>
+      <a class="nav-button indian-nav" href="#indian-markets"><span class="nav-icon" aria-hidden="true">📈</span><span data-en="Indian Markets" data-te="భారత మార్కెట్లు">Indian Markets</span></a>
+      <a class="nav-button global-nav" href="#global-markets"><span class="nav-icon" aria-hidden="true">🌐</span><span data-en="Global Markets" data-te="ప్రపంచ మార్కెట్లు">Global Markets</span></a>
     </nav>
   </header>
 
-  <main id="top" class="page-content">
+  <main class="page-content">
     <section class="welcome-panel">
-      <div>
-        <p class="eyebrow" data-en="NEWS • INFORMATION • KNOWLEDGE" data-te="వార్తలు • సమాచారం • విజ్ఞానం">NEWS • INFORMATION • KNOWLEDGE</p>
-        <h1 data-en="Stay informed. Keep learning." data-te="సమాచారం తెలుసుకోండి. నేర్చుకుంటూ ఉండండి.">Stay informed. Keep learning.</h1>
-        <p data-en="Explore education updates, Indian markets and global market developments." data-te="విద్యా విశేషాలు, భారత మార్కెట్లు మరియు ప్రపంచ మార్కెట్ల పరిణామాలను తెలుసుకోండి.">Explore education updates, Indian markets and global market developments.</p>
-      </div>
+      <p class="eyebrow" data-en="NEWS • INFORMATION • KNOWLEDGE" data-te="వార్తలు • సమాచారం • విజ్ఞానం">NEWS • INFORMATION • KNOWLEDGE</p>
+      <h1 data-en="Stay informed. Keep learning." data-te="సమాచారం తెలుసుకోండి. నేర్చుకుంటూ ఉండండి.">Stay informed. Keep learning.</h1>
+      <p data-en="Explore education updates, Indian markets and global market developments." data-te="విద్యా విశేషాలు, భారత మార్కెట్లు మరియు ప్రపంచ మార్కెట్ల పరిణామాలను తెలుసుకోండి.">Explore education updates, Indian markets and global market developments.</p>
     </section>
 
     <section class="news-section" id="education">
@@ -41,8 +39,20 @@
     </section>
 
     <section class="news-section" id="indian-markets">
-      <div class="section-heading"><h2 data-en="Indian Markets" data-te="భారత మార్కెట్లు">Indian Markets</h2><span data-en="India's business and market updates" data-te="భారత వ్యాపార మరియు మార్కెట్ సమాచారం">India's business and market updates</span></div>
-      <div class="news-placeholder"><div class="placeholder-icon">📈</div><div><h3 data-en="Indian market news and updates" data-te="భారత మార్కెట్ వార్తలు మరియు తాజా సమాచారం">Indian market news and updates</h3><p data-en="Indian market articles will appear here." data-te="భారత మార్కెట్లకు సంబంధించిన కథనాలు ఇక్కడ కనిపిస్తాయి.">Indian market articles will appear here.</p></div></div>
+      <div class="section-heading"><h2 data-en="Indian Markets" data-te="భారత మార్కెట్లు">Indian Markets</h2><span data-en="Choose a market category" data-te="మార్కెట్ విభాగాన్ని ఎంచుకోండి">Choose a market category</span></div>
+      <div class="market-grid">
+        <a class="market-card nifty-card" href="#nifty"><span class="market-symbol">N</span><span><strong>Nifty</strong><small data-en="Nifty index updates" data-te="నిఫ్టీ సూచీ సమాచారం">Nifty index updates</small></span><span class="card-arrow">›</span></a>
+        <a class="market-card stocks-card" href="#stocks"><span class="market-symbol">₹</span><span><strong data-en="Stocks" data-te="స్టాక్స్">Stocks</strong><small data-en="Individual stock updates" data-te="వివిధ షేర్ల సమాచారం">Individual stock updates</small></span><span class="card-arrow">›</span></a>
+        <a class="market-card sensex-card" href="#sensex"><span class="market-symbol">S</span><span><strong>Sensex</strong><small data-en="Sensex index updates" data-te="సెన్సెక్స్ సూచీ సమాచారం">Sensex index updates</small></span><span class="card-arrow">›</span></a>
+        <a class="market-card banknifty-card" href="#bank-nifty"><span class="market-symbol">B</span><span><strong>Bank Nifty</strong><small data-en="Banking sector index updates" data-te="బ్యాంకింగ్ రంగ సూచీ సమాచారం">Banking sector index updates</small></span><span class="card-arrow">›</span></a>
+      </div>
+      <div class="market-details">
+        <article class="detail-panel" id="nifty"><h3>Nifty</h3><p data-en="Nifty news and updates will appear here." data-te="నిఫ్టీ వార్తలు మరియు సమాచారం ఇక్కడ కనిపిస్తాయి.">Nifty news and updates will appear here.</p></article>
+        <article class="detail-panel" id="stocks"><h3 data-en="Stocks" data-te="స్టాక్స్">Stocks</h3><p data-en="Stock news and updates will appear here." data-te="షేర్ల వార్తలు మరియు సమాచారం ఇక్కడ కనిపిస్తాయి.">Stock news and updates will appear here.</p></article>
+        <article class="detail-panel" id="sensex"><h3>Sensex</h3><p data-en="Sensex news and updates will appear here." data-te="సెన్సెక్స్ వార్తలు మరియు సమాచారం ఇక్కడ కనిపిస్తాయి.">Sensex news and updates will appear here.</p></article>
+        <article class="detail-panel" id="bank-nifty"><h3>Bank Nifty</h3><p data-en="Bank Nifty news and updates will appear here." data-te="బ్యాంక్ నిఫ్టీ వార్తలు మరియు సమాచారం ఇక్కడ కనిపిస్తాయి.">Bank Nifty news and updates will appear here.</p></article>
+      </div>
+      <p class="content-note" data-en="Market sections are placeholders for now. Live prices and market data have not been added." data-te="ప్రస్తుతం మార్కెట్ విభాగాలు నమూనా రూపంలో ఉన్నాయి. లైవ్ ధరలు మరియు మార్కెట్ డేటా ఇంకా జోడించలేదు.">Market sections are placeholders for now. Live prices and market data have not been added.</p>
     </section>
 
     <section class="news-section" id="global-markets">
